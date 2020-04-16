@@ -1,0 +1,9 @@
+.wrapper {
+  margin: 10px;
+  margin-left: 50px;
+}
+
+mat-form-field {
+  margin-right: 20px;
+  margin-top: 20px;
+}

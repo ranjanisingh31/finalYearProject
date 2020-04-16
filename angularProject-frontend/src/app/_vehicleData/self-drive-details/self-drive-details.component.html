@@ -1,0 +1,223 @@
+<div class="wrapper">
+  <app-navbar></app-navbar>
+  <div class="wrapper-1">
+    <span class="mat-display-3">SELF-DRIVE</span>
+    <div class="details">
+      <app-self-drive></app-self-drive>
+    </div>
+
+    <div class="select">
+      <span>Select Vehicle</span>
+      <div class="ions" *ngFor="let detail of vehicleDetails | slice: min:max">
+        <div class="card-wrapper">
+          <mat-card id="card">
+            <mat-card-content>
+              <mat-icon
+                id="icon"
+                matTooltip="Info about the vehicle"
+                matTooltipPosition="after"
+                (click)="getInfo(detail)"
+                >info</mat-icon
+              >
+              <img src="{{ detail.img }}" alt="img" mat-card-image />
+              <mat-divider></mat-divider>
+              <p class="mat-display-1">{{ detail.name }}</p>
+              <p>Basic rental &nbsp;{{ detail.price | currency: "INR" }}</p>
+              <mat-card-actions align="center"
+                ><button
+                  mat-stroked-button
+                  id="btn"
+                  (click)="bookingDetails(detail)"
+                >
+                  BOOK
+                </button></mat-card-actions
+              >
+            </mat-card-content>
+          </mat-card>
+        </div>
+      </div>
+      <button *ngIf="hideNext" mat-fab class="next" (click)="next()">
+        <mat-icon>navigate_next</mat-icon>
+      </button>
+      <button *ngIf="hidePrev" mat-fab class="prev" (click)="prev()">
+        <mat-icon>navigate_before</mat-icon>
+      </button>
+    </div>
+    <!--<div class="panel">
+      <mat-accordion>
+        <mat-expansion-panel>
+          <mat-expansion-panel-header
+            ><mat-panel-title
+              >Car Information</mat-panel-title
+            ></mat-expansion-panel-header
+          >
+          <table>
+            <tr>
+              <td style="border-right: 1px solid lightgray;">
+                <div class="image">
+                  <img src="{{ detail.img }}" alt="img" />
+                </div>
+              </td>
+              <td>
+                <tr>
+                  <td>
+                    <div class="content">
+                      <ul
+                        type="none"
+                        style="line-height: 30px; text-align: left;"
+                      >
+                        <li style="font-size: 25px; font-weight: 300;">
+                          {{ detail.name }}
+                        </li>
+                        <li
+                          style="
+                            font-size: 20px;
+                            color: gray;
+                            font-weight: 300;
+                          "
+                        >
+                          Basic Rental-<span style="color: red;">
+                            {{ detail.price | currency: "INR" }}</span
+                          >
+                        </li>
+                      </ul>
+                    </div>
+                  </td>
+                </tr>
+                <mat-divider></mat-divider>
+                <tr>
+                  <td>
+                    <ul type="none">
+                      <li>
+                        <img
+                          class="info"
+                          src="./assets/img/auto.png"
+                          alt="img"
+                        />
+                      </li>
+                      <li class="title">Transmission</li>
+                      <li>
+                        <span class="value">{{ detail.mode }}</span>
+                      </li>
+                    </ul>
+                  </td>
+                  <td style="border-left: 1px solid lightgray;">
+                    <ul type="none">
+                      <li>
+                        <img
+                          class="info"
+                          src="./assets/img/carDoor.png"
+                          alt="img"
+                        />
+                      </li>
+                      <li class="title">Doors</li>
+                      <li>
+                        <span class="value">{{ detail.door }}</span>
+                      </li>
+                    </ul>
+                  </td>
+                </tr>
+                <tr>
+                  <td
+                    style="
+                      border-right: 1px solid lightgray;
+                      border-top: 1px solid lightgray;
+                    "
+                  >
+                    <ul type="none">
+                      <li>
+                        <img
+                          class="info"
+                          src="./assets/img/carSeat.png"
+                          alt="img"
+                        />
+                      </li>
+                      <li class="title">Seat Capacity</li>
+                      <li>
+                        <span class="value">{{ detail.seat }}</span>
+                      </li>
+                    </ul>
+                  </td>
+                  <td style="border-top: 1px solid lightgray;">
+                    <ul type="none">
+                      <li>
+                        <img
+                          class="info"
+                          src="./assets/img/luggage.png"
+                          alt="img"
+                        />
+                      </li>
+                      <li class="title">Luggage</li>
+                      <li>
+                        <span class="value">{{ detail.luggage }}</span>
+                      </li>
+                    </ul>
+                  </td>
+                </tr>
+              </td>
+            </tr>
+          </table>
+        </mat-expansion-panel>
+        <mat-expansion-panel>
+          <mat-expansion-panel-header
+            ><mat-panel-title
+              >Personal Details</mat-panel-title
+            ></mat-expansion-panel-header
+          >
+          <div class="form">
+            <form [formGroup]="personalDetailsForm">
+              <ul type="none">
+                <li>
+                  <mat-form-field>
+                    <mat-label>Full Name</mat-label>
+                    <input type="text" matInput />
+                  </mat-form-field>
+                  <mat-form-field>
+                    <mat-label>Email</mat-label>
+                    <input type="text" matInput formControlName="email" />
+                  </mat-form-field>
+                </li>
+                <li>
+                  <mat-form-field>
+                    <mat-label>Mobile</mat-label>
+                    <input type="text" matInput formControlName="mobile" />
+                  </mat-form-field>
+                  <mat-radio-group formControlName="gender">
+                    <mat-radio-button value="male">Male</mat-radio-button>
+                    <mat-radio-button value="female">Female</mat-radio-button>
+                  </mat-radio-group>
+                </li>
+                <li>
+                  <mat-form-field>
+                    <mat-label>Date Of Birth</mat-label>
+                    <input
+                      type="text"
+                      matInput
+                      formControlName="dob"
+                      placeholder="DD/MM/YYYY"
+                    />
+                  </mat-form-field>
+                  <button class="submit" mat-stroked-button>Submit</button>
+                </li>
+              </ul>
+            </form>
+          </div>
+        </mat-expansion-panel></mat-accordion
+      >
+    </div> -->
+
+    <!--
+<mat-vertical-stepper>
+  <mat-step label="Personal Details">data </mat-step>
+  <mat-step label="Choose">choose</mat-step>
+  <mat-step label="choose">choose</mat-step>
+</mat-vertical-stepper> -->
+
+    <!-- </div></mat-expansion-panel
+        ></mat-accordion
+      >
+    </div>
+  </div>
+</div> -->
+  </div>
+</div>

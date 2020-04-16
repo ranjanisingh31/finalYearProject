@@ -1,0 +1,22 @@
+::ng-deep .mat-tab-label .mat-tab-label-content {
+  font-size: 15px !important;
+  color: black !important;
+}
+::ng-deep .mat-tab-label .mat-tab-label-content :hover {
+  font-size: 15px !important;
+  color: black !important;
+}
+mat-card {
+  height: 250px;
+  background: initial;
+  padding: 0px;
+}
+::ng-deep .mat-tab-body-content {
+  padding-top: 20px;
+  height: 180px !important;
+}
+#card {
+  background: linear-gradient(white, white, white, lightpink);
+  border-radius: 10px;
+  margin: 0 40px;
+}

@@ -1,0 +1,31 @@
+.wrapper {
+  text-align: center;
+  font-size: 15px;
+}
+.mat-display-2 {
+  margin-bottom: 10px;
+}
+
+.mat-dialog-content {
+  text-align: left;
+  margin-top: 15px;
+  margin-bottom: 20px;
+}
+.forgotPass {
+  margin-left: 260px;
+}
+
+.link {
+  margin: 10px 0px 15px 125px;
+}
+.btn {
+  margin-left: 150px !important;
+  padding: 0 20px !important;
+  font-size: 20px;
+}
+mat-form-field {
+  width: 332.5px;
+}
+mat-icon {
+  cursor: pointer;
+}

@@ -1,0 +1,36 @@
+<div id="card">
+  <mat-card>
+    <mat-card-content>
+      <div class="tab">
+        <mat-tab-group mat-stretch-tabs [color]="'accent'">
+          <mat-tab label="Self-Drive">
+            <app-self-drive></app-self-drive>
+          </mat-tab>
+          <mat-tab label="Chauffeur Drive">
+            <app-chauffeur-drive></app-chauffeur-drive>
+          </mat-tab>
+          <mat-tab label="Lease A Vehicle?">
+            <div>
+              <ul>
+                <li>
+                  <mat-icon>directions_car</mat-icon>
+                  Vehicle leasing is the leasing (or the use) of a motor vehicle
+                  for a fixed period of time at an agreed amount of money for
+                  the lease.
+                </li>
+                <li>
+                  <mat-icon>monetization_on</mat-icon> Lease your vehicle with
+                  zero down payment
+                </li>
+                <li></li>
+              </ul>
+            </div>
+          </mat-tab>
+          <mat-tab label="Track Your Vehicle?">
+            <div></div>
+          </mat-tab>
+        </mat-tab-group>
+      </div>
+    </mat-card-content>
+  </mat-card>
+</div>

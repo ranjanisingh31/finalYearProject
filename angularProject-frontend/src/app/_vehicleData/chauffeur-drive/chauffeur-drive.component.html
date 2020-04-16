@@ -1,0 +1,207 @@
+<div>
+  <mat-radio-group [(ngModel)]="selectedRadio">
+    <mat-radio-button
+      *ngFor="let radio of radios; let i = index"
+      [value]="radio.title"
+      [checked]="i === 0"
+    >
+      {{ radio.title }}
+    </mat-radio-button>
+  </mat-radio-group>
+  <!-- AIRPORT/RAILWAY -->
+  <div class="cd">
+    <div
+      *ngIf="selectedRadio === 'AIRPORT & RAILWAY TRANSFERS'; then thenBlock"
+    ></div>
+    <ng-template #thenBlock>
+      <form [formGroup]="chauffeurAirportRailway">
+        <mat-form-field class="form" appearance="outline">
+          <mat-label>Origin City</mat-label>
+          <mat-select formControlName="city">
+            <mat-option>--None-- </mat-option>
+            <mat-option value="city">city</mat-option>
+          </mat-select>
+        </mat-form-field>
+
+        <mat-form-field class="form" appearance="outline">
+          <mat-label>Transfer Type</mat-label>
+          <mat-select formControlName="transferType">
+            <mat-option>--None-- </mat-option>
+            <mat-option value="Airport Drop">Airport Drop</mat-option>
+            <mat-option value="Airport Pickup">Airport Pick-Up</mat-option>
+            <mat-option value="Railway Drop">Railway Drop</mat-option>
+            <mat-option value="Railway Pickup">Railway Pick-Up</mat-option>
+          </mat-select>
+        </mat-form-field>
+
+        <mat-form-field class="form" appearance="outline">
+          <mat-label>Pickup Address</mat-label>
+          <input type="text" matInput formControlName="pickupAddress" />
+          <mat-icon matSuffix>place</mat-icon>
+        </mat-form-field>
+
+        <mat-form-field class="form" appearance="outline">
+          <mat-label>Start Date</mat-label>
+          <input
+            matInput
+            [min]="minDate"
+            [max]="maxDate"
+            [matDatepicker]="picker"
+            placeholder="MM/DD/YYYY"
+            formControlName="startDate"
+          />
+          <mat-datepicker-toggle
+            matSuffix
+            [for]="picker"
+          ></mat-datepicker-toggle>
+          <mat-datepicker #picker></mat-datepicker>
+        </mat-form-field>
+
+        <button
+          class="form"
+          mat-stroked-button
+          [disabled]="!chauffeurAirportRailway.valid"
+        >
+          SEARCH
+        </button>
+      </form>
+    </ng-template>
+  </div>
+
+  <!-- WITHINCITY -->
+  <div class="cd">
+    <div *ngIf="selectedRadio === 'WITHIN CITY'; then thenBlock1"></div>
+    <ng-template #thenBlock1>
+      <form [formGroup]="chauffeurWithinCity">
+        <mat-form-field class="form" appearance="outline">
+          <mat-label>Origin City</mat-label>
+          <mat-select formControlName="city">
+            <mat-option>--None-- </mat-option>
+            <mat-option value="city">city</mat-option>
+          </mat-select>
+        </mat-form-field>
+
+        <mat-form-field class="form" appearance="outline">
+          <mat-label>Pickup Address</mat-label>
+          <input type="text" matInput formControlName="pickupAddress" />
+          <mat-icon matSuffix>place</mat-icon>
+        </mat-form-field>
+
+        <mat-form-field class="form" appearance="outline">
+          <mat-label>Start Date</mat-label>
+          <input
+            matInput
+            [min]="minDate"
+            [max]="maxDate"
+            [matDatepicker]="picker1"
+            (dateInput)="setEndDate('input', $event)"
+            (dateChange)="setEndDate('change', $event)"
+            placeholder="MM/DD/YYYY"
+            formControlName="startDate"
+          />
+          <mat-datepicker-toggle
+            matSuffix
+            [for]="picker1"
+          ></mat-datepicker-toggle>
+          <mat-datepicker #picker1></mat-datepicker>
+        </mat-form-field>
+
+        <mat-form-field class="form" appearance="outline">
+          <mat-label>End Date</mat-label>
+          <input
+            matInput
+            [min]="minDate1"
+            [max]="maxDate1"
+            [matDatepicker]="picker2"
+            placeholder="MM/DD/YYYY"
+            formControlName="endDate"
+          />
+          <mat-datepicker-toggle
+            matSuffix
+            [for]="picker2"
+          ></mat-datepicker-toggle>
+          <mat-datepicker #picker2></mat-datepicker>
+        </mat-form-field>
+        <button
+          class="form"
+          mat-stroked-button
+          [disabled]="!chauffeurWithinCity.valid"
+        >
+          SEARCH
+        </button>
+      </form>
+    </ng-template>
+  </div>
+
+  <!-- OUTSTATION -->
+
+  <div class="cd1">
+    <div *ngIf="selectedRadio === 'OUTSTATION'; then thenBlock2"></div>
+    <ng-template #thenBlock2>
+      <form [formGroup]="chauffeurOutstation">
+        <mat-form-field appearance="outline" class="ff">
+          <mat-label>Origin City</mat-label>
+          <mat-select formControlName="city">
+            <mat-option>--None-- </mat-option>
+            <mat-option value="city">city</mat-option>
+          </mat-select>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline" class="ff">
+          <mat-label>To City</mat-label>
+          <input type="text" matInput formControlName="toCity" />
+          <mat-icon matSuffix>place</mat-icon>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline" class="ff">
+          <mat-label>Pickup Address</mat-label>
+          <input type="text" matInput formControlName="pickupAddress" />
+          <mat-icon matSuffix>place</mat-icon>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline" class="ff">
+          <mat-label>Start Date</mat-label>
+          <input
+            matInput
+            [min]="minDate"
+            [max]="maxDate"
+            [matDatepicker]="picker3"
+            (dateInput)="setEndDate1('input', $event)"
+            (dateChange)="setEndDate1('change', $event)"
+            placeholder="MM/DD/YYYY"
+            formControlName="startDate"
+          />
+          <mat-datepicker-toggle
+            matSuffix
+            [for]="picker3"
+          ></mat-datepicker-toggle>
+          <mat-datepicker #picker3></mat-datepicker>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline" class="ff">
+          <mat-label>End Date</mat-label>
+          <input
+            matInput
+            [min]="minDate2"
+            [max]="maxDate2"
+            [matDatepicker]="picker4"
+            placeholder="MM/DD/YYYY"
+            formControlName="endDate"
+          />
+          <mat-datepicker-toggle
+            matSuffix
+            [for]="picker4"
+          ></mat-datepicker-toggle>
+          <mat-datepicker #picker4></mat-datepicker>
+        </mat-form-field>
+        <button
+          class="btn"
+          mat-stroked-button
+          [disabled]="!chauffeurOutstation.valid"
+        >
+          SEARCH
+        </button>
+      </form>
+    </ng-template>
+  </div>
+</div>

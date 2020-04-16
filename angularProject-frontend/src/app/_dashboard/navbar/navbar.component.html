@@ -1,0 +1,28 @@
+<div class="navbar">
+  <span>
+    <header>
+      <button mat-button class="mat-display-4" id="header">
+        HAPPY WAY
+      </button>
+    </header>
+  </span>
+  <mat-toolbar id="toolbar">
+    <mat-toolbar-row>
+      <div class="space"></div>
+      <button class="button" mat-fab color="warn" id="about">ABOUT</button>
+      <button class="button" mat-fab color="primary" id="contact">
+        CONTACT
+      </button>
+      <div>
+        <button class="button" mat-fab (click)="openLoginDialog()" *ngIf="!fun">
+          LOGIN
+        </button>
+      </div>
+      <div>
+        <button class="button" mat-fab (click)="logOut()" *ngIf="fun">
+          LOGOUT
+        </button>
+      </div>
+    </mat-toolbar-row>
+  </mat-toolbar>
+</div>

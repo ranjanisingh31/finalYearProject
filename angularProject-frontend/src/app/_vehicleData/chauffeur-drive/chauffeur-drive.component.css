@@ -1,0 +1,26 @@
+mat-radio-button {
+  margin: 5px 15px 10px 165px;
+  padding: 5px;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+.form {
+  margin-left: 50px;
+  padding-left: 20px;
+}
+mat-form-field,
+.btn {
+  margin-left: 15px;
+}
+.cd {
+  margin-top: 10px;
+}
+.cd1 {
+  margin-left: 10px;
+  margin-top: 10px;
+}
+.ff {
+  margin-right: 10px;
+}
+::ng-deep .material-icons {
+  font-size: 30px !important;
+}

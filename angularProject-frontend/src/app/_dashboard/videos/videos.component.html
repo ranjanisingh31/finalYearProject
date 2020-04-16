@@ -1,0 +1,27 @@
+<div class="wrap">
+  <div>
+    <mat-grid-list cols="7" rowHeight="200px">
+      <mat-grid-tile
+        *ngFor="let video of videos"
+        rowspan="{{ video.rows }}"
+        colspan="{{ video.cols }}"
+      >
+        <video id="myVideo" autoplay loop muted="false" preload="auto">
+          <source src="{{ video.name }}" type="video/mp4" />
+          <source src="{{ video.name }}" type="video/webm" />
+        </video>
+      </mat-grid-tile>
+    </mat-grid-list>
+  </div>
+  <span>
+    <header>
+      <button mat-button class="mat-display-4" id="header">
+        HAPPY WAY
+      </button>
+    </header>
+  </span>
+  <div id="nav">
+    <app-navbar></app-navbar>
+  </div>
+  <app-animation-background></app-animation-background>
+</div>

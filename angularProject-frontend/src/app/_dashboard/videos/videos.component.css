@@ -1,0 +1,19 @@
+mat-grid-tile {
+  border-style: groove;
+  border-color: black;
+}
+#header {
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  font-weight: bold;
+  letter-spacing: 5px;
+  color: white;
+  -webkit-text-stroke: 1px #070707;
+  text-shadow: 0px 4px 4px #0c0c0c;
+  position: fixed;
+  background-color: rgba(255, 255, 255, 0.3);
+  transition: ease-in-out 1s;
+}
+#nav {
+  position: sticky;
+  top: 0;
+}

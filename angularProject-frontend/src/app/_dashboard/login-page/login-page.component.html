@@ -1,0 +1,170 @@
+<!-- Login Page -->
+<div class="wrapper" *ngIf="data.login">
+  <form [formGroup]="loginForm">
+    <span class="mat-display-2" mat-dialog-title>Sign-in</span>
+    <small>We're glad to see you again. Please sign-in.</small>
+    <mat-dialog-content>
+      <ul type="none">
+        <li>
+          <mat-form-field class="form" appearance="outline">
+            <mat-label>Email</mat-label>
+            <input type="email" matInput formControlName="email" />
+          </mat-form-field>
+        </li>
+        <li>
+          <mat-form-field class="form" appearance="outline">
+            <mat-label>Password</mat-label>
+            <input
+              [type]="hide ? 'password' : 'text'"
+              matInput
+              formControlName="password"
+            />
+            <mat-icon matSuffix (click)="hide = !hide">{{
+              hide ? "visibility_off" : "visibility"
+            }}</mat-icon>
+          </mat-form-field>
+        </li>
+      </ul>
+      <small class="forgotPass"
+        ><a
+          style="cursor: pointer; color: darkred;"
+          (click)="openResetPass()"
+          mat-dialog-close="true"
+        >
+          Forgot password?
+        </a></small
+      >
+    </mat-dialog-content>
+
+    <mat-dialog-actions>
+      <button
+        mat-stroked-button
+        mat-dialog-close="true"
+        [disabled]="!loginForm.valid"
+        (click)="onSubmitLogin()"
+        class="btn"
+      >
+        Sign-in
+      </button>
+      <small class="link"
+        >Are you a new user?&nbsp;<a
+          style="cursor: pointer; color: darkred;"
+          mat-dialog-close="true"
+          (click)="openRegister()"
+          >Register</a
+        ></small
+      >
+    </mat-dialog-actions>
+  </form>
+</div>
+<!-- Registration page -->
+<div class="wrapper" *ngIf="data.register">
+  <span class="mat-display-2" mat-dialog-title>Register</span>
+  <small
+    >Welcome to Happy Way. As a registered user you will get unrestrictetd
+    access to all the features.</small
+  >
+  <form [formGroup]="registerationForm">
+    <mat-dialog-content>
+      <ul type="none">
+        <li>
+          <mat-form-field appearance="outline">
+            <mat-label>Full Name</mat-label>
+            <input type="text" matInput formControlName="fullName" />
+          </mat-form-field>
+        </li>
+        <li>
+          <mat-form-field appearance="outline">
+            <mat-label>Email</mat-label>
+            <input type="email" matInput formControlName="email" />
+          </mat-form-field>
+        </li>
+        <li>
+          <mat-form-field appearance="outline">
+            <mat-label>Password</mat-label>
+            <input
+              [type]="hide ? 'password' : 'text'"
+              matInput
+              formControlName="password"
+            />
+            <mat-icon matSuffix (click)="hide = !hide">{{
+              hide ? "visibility_off" : "visibility"
+            }}</mat-icon>
+          </mat-form-field>
+        </li>
+      </ul>
+    </mat-dialog-content>
+    <mat-dialog-actions>
+      <button
+        mat-dialog-close="true"
+        mat-stroked-button
+        [disabled]="!registerationForm.valid"
+        (click)="onSubmitRegister()"
+        class="btn"
+      >
+        REGISTER
+      </button>
+      <small class="link"
+        >Already have login and password?&nbsp;<a
+          style="cursor: pointer; color: darkred;"
+          (click)="openLogin()"
+          mat-dialog-close="true"
+          >Sign-in</a
+        ></small
+      ></mat-dialog-actions
+    >
+  </form>
+</div>
+<!-- Reset Page -->
+
+<div class="wrapper" *ngIf="data.reset">
+  <span class="mat-display-2" mat-dialog-title>Reset Password</span>
+  <small
+    >We'll be sending a link to your email on successfull reset of
+    password.Please login again.</small
+  >
+  <form [formGroup]="resetPasswordForm">
+    <mat-dialog-content>
+      <ul type="none">
+        <li>
+          <mat-form-field class="form" appearance="outline">
+            <mat-label>Email</mat-label>
+            <input type="email" matInput formControlName="email" />
+          </mat-form-field>
+        </li>
+        <li>
+          <mat-form-field class="form" appearance="outline">
+            <mat-label>Password</mat-label>
+            <input
+              [type]="hide ? 'password' : 'text'"
+              matInput
+              formControlName="password"
+            />
+            <mat-icon matSuffix (click)="hide = !hide">{{
+              hide ? "visibility_off" : "visibility"
+            }}</mat-icon>
+          </mat-form-field>
+        </li>
+      </ul>
+    </mat-dialog-content>
+    <mat-dialog-actions>
+      <button
+        mat-stroked-button
+        mat-dialog-close="true"
+        [disabled]="!resetPasswordForm.valid"
+        (click)="onSubmitReset()"
+        class="btn"
+      >
+        RESET
+      </button>
+      <small class="link"
+        >Already have login and password?&nbsp;<a
+          style="cursor: pointer; color: darkred;"
+          (click)="openLogin()"
+          mat-dialog-close="true"
+          >Sign-in</a
+        ></small
+      >
+    </mat-dialog-actions>
+  </form>
+</div>

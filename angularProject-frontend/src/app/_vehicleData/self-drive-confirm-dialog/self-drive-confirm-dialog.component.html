@@ -1,0 +1,15 @@
+<div class="dialog">
+  <div mat-dialog-content>
+    <span>
+      <img src="{{ data.details.selectedVehicleDetails.img }}" />{{
+        data.details.selectedVehicleDetails.name
+      }}</span
+    >
+    <span>StartDate</span>{{ data.details.startDate }} <span>EndDate</span
+    >{{ data.details.endDate }} <span>deliveryAddress</span
+    >{{ data.details.deliveryAddress }}<span>Basic Rental</span
+    >{{ data.details.selectedVehicleDetails.price }} <span>SubTotal</span
+    >{{ data.details.selectedVehicleDetails.price }} <span>taxes</span>{{ taxes
+    }}<span>gst</span>{{ gst }}<span>total</span>{{ total }}
+  </div>
+</div>

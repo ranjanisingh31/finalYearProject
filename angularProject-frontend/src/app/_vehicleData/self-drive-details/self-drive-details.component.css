@@ -14,6 +14,7 @@ app-navbar {
   margin-top: 5px !important;
   height: 150px !important;
   width: 230px !important;
+  padding-left: 15px;
 }
 #icon {
   margin-left: 200px;
@@ -49,10 +50,11 @@ p {
   margin-top: 200px;
 }
 .ions {
-  height: 415px;
+  height: 405px;
   margin: 20px;
   border-radius: 10px;
   border-style: outset;
+  background: linear-gradient(white, white, moccasin);
 }
 ion-slide {
   background: linear-gradient(black, white);
@@ -66,13 +68,14 @@ ion-slide {
   color: black;
 }
 .next {
-  margin-left: 1000px;
-  bottom: 250px;
+  bottom: 240px;
+  left: 1000px;
 }
 .prev {
-  margin-left: -790px;
   bottom: 250px;
+  left: 230px;
 }
+
 .image {
   height: 350px;
   width: 800px;
@@ -109,6 +112,7 @@ mat-expansion-panel-header,
 }
 .select {
   padding: 20px;
+  height: 465px;
 }
 .info {
   height: 55px;
@@ -148,6 +152,7 @@ mat-radio-button {
 }
 .form {
   margin: 40px;
-  padding-left: 135px;
+  padding-left: 180px;
   border-style: outset;
 }
+

@@ -1,10 +1,6 @@
 <div>
   <mat-radio-group [(ngModel)]="selectedRadio">
-    <mat-radio-button
-      *ngFor="let radio of radios; let i = index"
-      [value]="radio.title"
-      [checked]="i === 0"
-    >
+    <mat-radio-button *ngFor="let radio of radios" [value]="radio.title">
       {{ radio.title }}
     </mat-radio-button>
   </mat-radio-group>
@@ -61,6 +57,7 @@
           class="form"
           mat-stroked-button
           [disabled]="!chauffeurAirportRailway.valid"
+          (click)="onSubmitAR()"
         >
           SEARCH
         </button>
@@ -126,6 +123,7 @@
           class="form"
           mat-stroked-button
           [disabled]="!chauffeurWithinCity.valid"
+          (click)="onSubmitWC()"
         >
           SEARCH
         </button>
@@ -198,6 +196,7 @@
           class="btn"
           mat-stroked-button
           [disabled]="!chauffeurOutstation.valid"
+          (click)="onSubmitO()"
         >
           SEARCH
         </button>

@@ -36,16 +36,30 @@
           </mat-card>
         </div>
       </div>
-      <button *ngIf="hideNext" mat-fab class="next" (click)="next()">
-        <mat-icon>navigate_next</mat-icon>
-      </button>
-      <button *ngIf="hidePrev" mat-fab class="prev" (click)="prev()">
-        <mat-icon>navigate_before</mat-icon>
-      </button>
+      <span>
+        <button
+          [disabled]="!hideNext"
+          mat-icon-button
+          class="next"
+          (click)="next()"
+        >
+          <mat-icon>arrow_forward_ios</mat-icon>
+        </button></span
+      >
+      <span>
+        <button
+          [disabled]="!hidePrev"
+          mat-icon-button
+          class="prev"
+          (click)="prev()"
+        >
+          <mat-icon>arrow_back_ios</mat-icon>
+        </button></span
+      >
     </div>
-    <!--<div class="panel">
-      <mat-accordion>
-        <mat-expansion-panel>
+    <div class="panel">
+      <mat-accordion multi="true" *ngIf="toggle">
+        <mat-expansion-panel [expanded]="toggle">
           <mat-expansion-panel-header
             ><mat-panel-title
               >Car Information</mat-panel-title
@@ -55,7 +69,7 @@
             <tr>
               <td style="border-right: 1px solid lightgray;">
                 <div class="image">
-                  <img src="{{ detail.img }}" alt="img" />
+                  <img src="{{ _detail.img }}" alt="img" />
                 </div>
               </td>
               <td>
@@ -67,7 +81,7 @@
                         style="line-height: 30px; text-align: left;"
                       >
                         <li style="font-size: 25px; font-weight: 300;">
-                          {{ detail.name }}
+                          {{ _detail.name }}
                         </li>
                         <li
                           style="
@@ -77,7 +91,7 @@
                           "
                         >
                           Basic Rental-<span style="color: red;">
-                            {{ detail.price | currency: "INR" }}</span
+                            {{ _detail.price | currency: "INR" }}</span
                           >
                         </li>
                       </ul>
@@ -97,7 +111,7 @@
                       </li>
                       <li class="title">Transmission</li>
                       <li>
-                        <span class="value">{{ detail.mode }}</span>
+                        <span class="value">{{ _detail.mode }}</span>
                       </li>
                     </ul>
                   </td>
@@ -112,7 +126,7 @@
                       </li>
                       <li class="title">Doors</li>
                       <li>
-                        <span class="value">{{ detail.door }}</span>
+                        <span class="value">{{ _detail.door }}</span>
                       </li>
                     </ul>
                   </td>
@@ -134,7 +148,7 @@
                       </li>
                       <li class="title">Seat Capacity</li>
                       <li>
-                        <span class="value">{{ detail.seat }}</span>
+                        <span class="value">{{ _detail.seat }}</span>
                       </li>
                     </ul>
                   </td>
@@ -149,7 +163,7 @@
                       </li>
                       <li class="title">Luggage</li>
                       <li>
-                        <span class="value">{{ detail.luggage }}</span>
+                        <span class="value">{{ _detail.luggage }}</span>
                       </li>
                     </ul>
                   </td>
@@ -170,7 +184,7 @@
                 <li>
                   <mat-form-field>
                     <mat-label>Full Name</mat-label>
-                    <input type="text" matInput />
+                    <input type="text" matInput formControlName="fullName" />
                   </mat-form-field>
                   <mat-form-field>
                     <mat-label>Email</mat-label>
@@ -197,27 +211,25 @@
                       placeholder="DD/MM/YYYY"
                     />
                   </mat-form-field>
-                  <button class="submit" mat-stroked-button>Submit</button>
+                  <button
+                    class="submit"
+                    [disabled]="!personalDetailsForm.valid"
+                    mat-stroked-button
+                    (click)="onSubmit()"
+                  >
+                    Submit
+                  </button>
                 </li>
               </ul>
             </form>
           </div>
         </mat-expansion-panel></mat-accordion
       >
-    </div> -->
-
-    <!--
-<mat-vertical-stepper>
-  <mat-step label="Personal Details">data </mat-step>
-  <mat-step label="Choose">choose</mat-step>
-  <mat-step label="choose">choose</mat-step>
-</mat-vertical-stepper> -->
-
-    <!-- </div></mat-expansion-panel
-        ></mat-accordion
-      >
     </div>
-  </div>
-</div> -->
+    <!-- <mat-vertical-stepper>
+      <mat-step label="Personal Details">data </mat-step>
+      <mat-step label="Choose">choose</mat-step>
+      <mat-step label="choose">choose</mat-step>
+    </mat-vertical-stepper> -->
   </div>
 </div>

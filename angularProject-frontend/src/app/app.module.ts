@@ -20,6 +20,8 @@ import { TrackVehicleComponent } from "./_vehicleData/track-vehicle/track-vehicl
 import { SigninAuthService } from "./_services_guard_interceptor/signin-auth.service";
 import { HTTP_INTERCEPTORS, HttpClientModule } from "@angular/common/http";
 import { TokenInterceptorService } from "./_services_guard_interceptor/token-interceptor.service";
+import { ChauffeurDriveDetailsComponent } from './_vehicleData/chauffeur-drive-details/chauffeur-drive-details.component';
+import { SelfDriveConfirmDialogComponent } from './_vehicleData/self-drive-confirm-dialog/self-drive-confirm-dialog.component';
 
 @NgModule({
   declarations: [
@@ -35,6 +37,8 @@ import { TokenInterceptorService } from "./_services_guard_interceptor/token-int
     SelfDriveDetailsComponent,
     SelfDriveInfoDialogComponent,
     TrackVehicleComponent,
+    ChauffeurDriveDetailsComponent,
+    SelfDriveConfirmDialogComponent,
   ],
   imports: [
     BrowserModule,

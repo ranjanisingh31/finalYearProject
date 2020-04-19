@@ -57,9 +57,7 @@ export class SelfDriveComponent implements OnInit {
 
   //FORM SUBMIT
   onSubmit() {
-    console.log("self-drive", this.selfDriveForm.value);
     this._selfDriveService.setUserRequirements(this.selfDriveForm.value);
-    console.log(this._signinService.loggedIn());
     if (this._signinService.loggedIn()) {
       this.router.navigate(["/self-drive"]);
     } else {

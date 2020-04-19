@@ -1,0 +1,63 @@
+<div class="backG">
+  <app-navbar></app-navbar>
+  <div class="wrapper">
+    <div class="wrap">
+      <app-chauffeur-drive></app-chauffeur-drive>
+    </div>
+
+    <div class="panel">
+      <mat-accordion>
+        <mat-expansion-panel>
+          <mat-expansion-panel-header>
+            <mat-panel-title>Personal Details</mat-panel-title>
+          </mat-expansion-panel-header>
+          <div class="form">
+            <form [formGroup]="personalDetailsForm">
+              <ul type="none">
+                <li>
+                  <mat-form-field>
+                    <mat-label>Full Name</mat-label>
+                    <input type="text" matInput formControlName="fullName" />
+                  </mat-form-field>
+                  <mat-form-field>
+                    <mat-label>Email</mat-label>
+                    <input type="text" matInput formControlName="email" />
+                  </mat-form-field>
+                </li>
+                <li>
+                  <mat-form-field>
+                    <mat-label>Mobile</mat-label>
+                    <input type="text" matInput formControlName="mobile" />
+                  </mat-form-field>
+                  <mat-radio-group formControlName="gender">
+                    <mat-radio-button value="male">Male</mat-radio-button>
+                    <mat-radio-button value="female">Female</mat-radio-button>
+                  </mat-radio-group>
+                </li>
+                <li>
+                  <mat-form-field>
+                    <mat-label>Date Of Birth</mat-label>
+                    <input
+                      type="text"
+                      matInput
+                      formControlName="dob"
+                      placeholder="DD/MM/YYYY"
+                    />
+                  </mat-form-field>
+                  <button
+                    class="submit"
+                    [disabled]="!personalDetailsForm.valid"
+                    mat-stroked-button
+                    (click)="onSubmit()"
+                  >
+                    Submit
+                  </button>
+                </li>
+              </ul>
+            </form>
+          </div>
+        </mat-expansion-panel>
+      </mat-accordion>
+    </div>
+  </div>
+</div>

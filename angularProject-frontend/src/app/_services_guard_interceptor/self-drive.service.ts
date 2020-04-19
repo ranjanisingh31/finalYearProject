@@ -16,7 +16,10 @@ export class SelfDriveService {
     this.selfDriveForm = data;
     console.log("form", this.selfDriveForm);
   }
-
+  setUserSubmitFormDetails(data, data1) {
+    this.selfDriveForm["clientDetails"] = data;
+    this.selfDriveForm["selectedVehicleDetails"] = data1;
+  }
   getUserRequirements() {
     return this.selfDriveForm;
   }

@@ -10,4 +10,8 @@ const vehicleSchema = new Schema({
   luggage: Number,
 });
 
-module.exports = mongoose.model("vehicleDetail", vehicleSchema, "vehicleDetails");
+module.exports = mongoose.model(
+  "vehicleDetail",
+  vehicleSchema,
+  "vehicleDetails"
+);

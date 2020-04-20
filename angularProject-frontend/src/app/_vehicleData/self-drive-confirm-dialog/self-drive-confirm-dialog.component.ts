@@ -33,11 +33,7 @@ export class SelfDriveConfirmDialogComponent implements OnInit {
       },
       (err) => {
         if (err instanceof HttpErrorResponse) {
-          if (err.status === 401) {
-            alert(err.error.message + " Please Register again!!!");
-          } else {
-            alert(err.statusText + " Try Again!!!");
-          }
+          alert(err.error.message + " Please Add vehicle details again!!!");
         }
       }
     );

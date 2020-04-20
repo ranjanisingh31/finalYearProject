@@ -21,4 +21,5 @@ export interface confirmBookingSelfDrive {
     seat: number;
     luggage: number;
   };
+  message: string;
 }

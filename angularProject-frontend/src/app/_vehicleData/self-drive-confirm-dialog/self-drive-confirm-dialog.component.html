@@ -1,15 +1,122 @@
 <div class="dialog">
   <div mat-dialog-content>
-    <span>
-      <img src="{{ data.details.selectedVehicleDetails.img }}" />{{
-        data.details.selectedVehicleDetails.name
-      }}</span
-    >
-    <span>StartDate</span>{{ data.details.startDate }} <span>EndDate</span
-    >{{ data.details.endDate }} <span>deliveryAddress</span
-    >{{ data.details.deliveryAddress }}<span>Basic Rental</span
-    >{{ data.details.selectedVehicleDetails.price }} <span>SubTotal</span
-    >{{ data.details.selectedVehicleDetails.price }} <span>taxes</span>{{ taxes
-    }}<span>gst</span>{{ gst }}<span>total</span>{{ total }}
+    <table>
+      <tr>
+        <td><div class="title">SELF DRIVE</div></td>
+
+        <td style="text-align: center; border-right: 1px solid darkgray;">
+          <ul type="none">
+            <li>
+              <div>
+                <img
+                  src="{{ data.details.selectedVehicleDetails.img }}"
+                  style="width: 245px; height: 150px;"
+                />
+              </div>
+            </li>
+            <li>
+              <span style="font-size: 25px;">{{
+                data.details.selectedVehicleDetails.name
+              }}</span>
+            </li>
+          </ul>
+        </td>
+        <td>
+          <ul type="none">
+            <li
+              style="
+                font-size: 20px;
+                font-weight: 600;
+                padding-bottom: 10px;
+                border-bottom: 1px dashed darkgray;
+              "
+            >
+              <span style="margin-left: 20px;">START</span>
+              <span style="margin-left: 317px;">END</span>
+            </li>
+            <li style="font-size: 15px;">
+              <span
+                >{{ startDate[2] }}&nbsp;{{ startDate[1] }}&nbsp;{{
+                  startDate[3]
+                }},&nbsp;{{ startDate[0] }}</span
+              ><span style="margin-left: 250px;"
+                >{{ endDate[2] }}&nbsp;{{ endDate[1] }}&nbsp;{{
+                  endDate[3]
+                }},&nbsp;{{ endDate[0] }}</span
+              >
+            </li>
+
+            <li style="font-weight: 300; margin-top: 85px; font-size: 20px;">
+              <span style="font-weight: 500;">Delivery Address: </span
+              >{{ data.details.deliveryAddress }}
+            </li>
+            <li style="font-weight: 300; margin-top: 20px; font-size: 20px;">
+              <span style="font-weight: 500;">Duration: </span
+              >{{ duration }}&nbsp;hrs
+            </li>
+          </ul>
+        </td>
+        <td>
+          <div style="text-align: end; margin: -10px 10px 0px 10px;">
+            <button
+              mat-icon-button
+              (click)="onClose()"
+              mat-dialog-close="false"
+            >
+              <mat-icon>close</mat-icon>
+            </button>
+          </div>
+          <ul
+            type="none"
+            class="col"
+            style="
+              font-size: 17px;
+              border: 1px solid darkgray;
+              margin-top: 0px;
+              margin-right: 15px;
+            "
+          >
+            <li style="font-weight: 500;" class="list">
+              <span>BASIC RENTAL: </span
+              ><span class="space">{{
+                this.data.details.selectedVehicleDetails.price
+              }}</span>
+            </li>
+            <li class="list">
+              <span>SUB TOTAL: </span
+              ><span class="space">{{
+                this.data.details.selectedVehicleDetails.price
+              }}</span>
+            </li>
+            <li class="list">
+              <span>TAXES: </span
+              ><span style="cursor: pointer;" class="info">
+                <mat-icon matTooltip="GST: {{ 12 }}%" matTooltipPosition="after"
+                  >info</mat-icon
+                > </span
+              ><span class="space" style="margin-right: 2px;">{{ taxes }}</span>
+            </li>
+            <li style="font-weight: 500;" class="list">
+              <span>TOTAL: </span><span class="space">{{ total }}</span>
+            </li>
+            <li>
+              <button
+                mat-stroked-button
+                (click)="confirm()"
+                style="
+                  padding: 0px 50px;
+                  font-size: 20px;
+                  color: white;
+                  letter-spacing: 1px;
+                  background-color: maroon;
+                "
+              >
+                CONFIRM BOOKING
+              </button>
+            </li>
+          </ul>
+        </td>
+      </tr>
+    </table>
   </div>
 </div>

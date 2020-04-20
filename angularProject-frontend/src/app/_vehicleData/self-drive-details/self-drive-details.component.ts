@@ -81,8 +81,8 @@ export class SelfDriveDetailsComponent implements OnInit {
       this._detail
     );
     this.dialog.open(SelfDriveConfirmDialogComponent, {
-      width: "800px",
-      height: "400px",
+      width: "1580px",
+      height: "300px",
       data: {
         details: this._selfDriveService.getUserRequirements(),
       },

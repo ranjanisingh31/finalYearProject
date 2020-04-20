@@ -151,8 +151,7 @@ mat-radio-button {
   padding-right: 40px;
 }
 .form {
-  margin: 40px;
+  margin: 0px 40px 10px;
   padding-left: 180px;
   border-style: outset;
 }
-

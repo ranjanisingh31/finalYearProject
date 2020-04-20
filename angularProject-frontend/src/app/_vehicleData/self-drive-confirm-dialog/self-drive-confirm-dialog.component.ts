@@ -1,5 +1,7 @@
 import { Component, OnInit, Inject } from "@angular/core";
-import { MAT_DIALOG_DATA } from "@angular/material/dialog";
+import { MAT_DIALOG_DATA, MatDialogRef } from "@angular/material/dialog";
+import { SelfDriveService } from "src/app/_services_guard_interceptor/self-drive.service";
+import { HttpErrorResponse } from "@angular/common/http";
 
 @Component({
   selector: "app-self-drive-confirm-dialog",
@@ -7,10 +9,38 @@ import { MAT_DIALOG_DATA } from "@angular/material/dialog";
   styleUrls: ["./self-drive-confirm-dialog.component.css"],
 })
 export class SelfDriveConfirmDialogComponent implements OnInit {
-  constructor(@Inject(MAT_DIALOG_DATA) public data: any) {}
-  public duration = this.data.details.endDate - this.data.details.startDate;
+  constructor(
+    @Inject(MAT_DIALOG_DATA) public data: any,
+    public dialogRef: MatDialogRef<SelfDriveConfirmDialogComponent>,
+    private _selfDriveService: SelfDriveService
+  ) {}
+
   public gst = 12;
+  public startDate = this.data.details.startDate.toString().split(" ", 4);
+  public endDate = this.data.details.endDate.toString().split(" ", 4);
+  public duration = (this.endDate[2] - this.startDate[2]) * 24;
   public taxes = (this.data.details.selectedVehicleDetails.price * 12) / 100;
-  public total = this.data.details.selectedVehicleDetails.price + this.taxes;
+  public total: number =
+    parseInt(this.data.details.selectedVehicleDetails.price) + this.taxes;
+
+  onClose() {
+    this.dialogRef.close();
+  }
+  confirm() {
+    this._selfDriveService.confirmBooking().subscribe(
+      (res) => {
+        alert(res.message);
+      },
+      (err) => {
+        if (err instanceof HttpErrorResponse) {
+          if (err.status === 401) {
+            alert(err.error.message + " Please Register again!!!");
+          } else {
+            alert(err.statusText + " Try Again!!!");
+          }
+        }
+      }
+    );
+  }
   ngOnInit(): void {}
 }

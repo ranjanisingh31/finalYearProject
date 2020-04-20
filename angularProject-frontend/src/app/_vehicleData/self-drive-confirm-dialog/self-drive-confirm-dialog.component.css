@@ -1,0 +1,37 @@
+.title {
+  writing-mode: vertical-rl;
+  transform: rotate(180deg);
+  width: 40px;
+  background-color: black;
+  color: white;
+  font-size: 30px;
+  padding: 20px 15px 20px 0px;
+  height: 245px;
+  text-align: center;
+}
+::ng-deep.mat-dialog-container {
+  padding: 0px;
+  overflow: hidden;
+  height: 276px;
+}
+ul {
+  margin: 10px;
+  padding: 0px;
+}
+li {
+  margin: 10px;
+}
+.col > .list {
+  padding: 3px;
+  border-bottom: 1px solid darkgray;
+}
+.space {
+  float: right;
+  text-transform: none;
+  position: relative;
+  margin-right: 25px;
+}
+.info {
+  float: right;
+  position: relative;
+}

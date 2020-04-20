@@ -2,6 +2,7 @@ import { Injectable } from "@angular/core";
 import { HttpClient } from "@angular/common/http";
 import { Observable } from "rxjs";
 import { vehicleDetails } from "../_interfaces/vehicleDetails";
+import { confirmBookingSelfDrive } from "../_interfaces/confirmBookingSelfDrive";
 
 @Injectable({
   providedIn: "root",
@@ -14,7 +15,6 @@ export class SelfDriveService {
   public selfDriveForm = {};
   setUserRequirements(data) {
     this.selfDriveForm = data;
-    console.log("form", this.selfDriveForm);
   }
   setUserSubmitFormDetails(data, data1) {
     this.selfDriveForm["clientDetails"] = data;
@@ -26,5 +26,12 @@ export class SelfDriveService {
 
   getVehicleDetails(): Observable<vehicleDetails[]> {
     return this.http.get<vehicleDetails[]>(this.vehicleDetails_url);
+  }
+
+  confirmBooking(): Observable<confirmBookingSelfDrive> {
+    return this.http.post<confirmBookingSelfDrive>(
+      this.selfDrive_url,
+      this.selfDriveForm
+    );
   }
 }

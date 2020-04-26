@@ -6,6 +6,7 @@ const nodemailer = require("nodemailer");
 const RegisterLogin = require("../model/registerLogin.js");
 const vehicleDetails = require("../model/vehicleDetails.js");
 const selfDriveDetails = require("../model/selfDriveDetails.js");
+const chauffeurDriveDetails = require("..//model/chauffeurDriveDetails.js");
 const dbString = "mongodb://127.0.0.1:27017/finalYearProjectDB";
 
 mongoose.connect(dbString, (err) => {
@@ -186,4 +187,17 @@ router.post("/self-drive", (req, res) => {
   });
 });
 
+router.post("/chauffeur-drive", (req, res) => {
+  let userData = req.body;
+  let user = new chauffeurDriveDetails(userData);
+  user.save((error, data) => {
+    if (error) {
+      console.log(error);
+      res.status(500).json({ message: "Request Not Implemented" });
+    } else {
+      console.log("submitted");
+      res.status(200).json({ message: "Confirmed Booking" });
+    }
+  });
+});
 module.exports = router;

@@ -1,11 +1,14 @@
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
-const selfDriveSchema = new Schema({
+const chauffeurDriveSchema = new Schema({
+  type: String,
   city: String,
+  transferType: String,
+  pickupAddress: String,
   deliveryAddress: String,
   startDate: String,
   endDate: String,
-  vehicle: String,
+  toCity: String,
   clientDetails: {
     fullName: String,
     email: String,
@@ -19,7 +22,7 @@ const selfDriveSchema = new Schema({
 });
 
 module.exports = mongoose.model(
-  "selfDriveDetail",
-  selfDriveSchema,
-  "selfDriveDetails"
+  "chauffeurDriveDetail",
+  chauffeurDriveSchema,
+  "chauffeurDriveDetails"
 );

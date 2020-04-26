@@ -5,6 +5,7 @@ import { LoginPageComponent } from "./_dashboard/login-page/login-page.component
 import { SelfDriveDetailsComponent } from "./_vehicleData/self-drive-details/self-drive-details.component";
 import { SigninGuardGuard } from "./_services_guard_interceptor/signin-guard.guard";
 import { ChauffeurDriveDetailsComponent } from "./_vehicleData/chauffeur-drive-details/chauffeur-drive-details.component";
+import { ThankYouPageComponent } from "./_dashboard/thank-you-page/thank-you-page.component";
 
 const routes: Routes = [
   { path: "", component: VideosComponent },
@@ -18,6 +19,10 @@ const routes: Routes = [
     path: "chauffeur-drive",
     component: ChauffeurDriveDetailsComponent,
     canActivate: [SigninGuardGuard],
+  },
+  {
+    path: "ThankYou-Page",
+    component: ThankYouPageComponent,
   },
 ];
 

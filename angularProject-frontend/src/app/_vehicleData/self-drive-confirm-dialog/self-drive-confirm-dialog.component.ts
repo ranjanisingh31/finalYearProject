@@ -2,6 +2,7 @@ import { Component, OnInit, Inject } from "@angular/core";
 import { MAT_DIALOG_DATA, MatDialogRef } from "@angular/material/dialog";
 import { SelfDriveService } from "src/app/_services_guard_interceptor/self-drive.service";
 import { HttpErrorResponse } from "@angular/common/http";
+import { Router } from "@angular/router";
 
 @Component({
   selector: "app-self-drive-confirm-dialog",
@@ -12,7 +13,8 @@ export class SelfDriveConfirmDialogComponent implements OnInit {
   constructor(
     @Inject(MAT_DIALOG_DATA) public data: any,
     public dialogRef: MatDialogRef<SelfDriveConfirmDialogComponent>,
-    private _selfDriveService: SelfDriveService
+    private _selfDriveService: SelfDriveService,
+    private router: Router
   ) {}
 
   public gst = 12;
@@ -30,6 +32,8 @@ export class SelfDriveConfirmDialogComponent implements OnInit {
     this._selfDriveService.confirmBooking().subscribe(
       (res) => {
         alert(res.message);
+        this.dialogRef.close();
+        this.router.navigate(["/ThankYou-Page"]);
       },
       (err) => {
         if (err instanceof HttpErrorResponse) {

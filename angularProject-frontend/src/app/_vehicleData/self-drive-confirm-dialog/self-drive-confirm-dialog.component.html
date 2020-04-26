@@ -79,13 +79,13 @@
             <li style="font-weight: 500;" class="list">
               <span>BASIC RENTAL: </span
               ><span class="space">{{
-                this.data.details.selectedVehicleDetails.price
+                this.data.details.selectedVehicleDetails.price | currency: "INR"
               }}</span>
             </li>
             <li class="list">
               <span>SUB TOTAL: </span
               ><span class="space">{{
-                this.data.details.selectedVehicleDetails.price
+                this.data.details.selectedVehicleDetails.price | currency: "INR"
               }}</span>
             </li>
             <li class="list">
@@ -94,10 +94,13 @@
                 <mat-icon matTooltip="GST: {{ 12 }}%" matTooltipPosition="after"
                   >info</mat-icon
                 > </span
-              ><span class="space" style="margin-right: 2px;">{{ taxes }}</span>
+              ><span class="space" style="margin-right: 2px;">{{
+                taxes | currency: "INR"
+              }}</span>
             </li>
             <li style="font-weight: 500;" class="list">
-              <span>TOTAL: </span><span class="space">{{ total }}</span>
+              <span>TOTAL: </span
+              ><span class="space">{{ total | currency: "INR" }}</span>
             </li>
             <li>
               <button

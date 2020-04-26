@@ -35,7 +35,7 @@ p {
 .details,
 .select {
   border-radius: 10px;
-  margin: 50px;
+  margin: 50px 75px;
   border: 1.5px solid;
   background: white;
 }
@@ -43,8 +43,9 @@ p {
 .wrapper {
   background-image: url("/assets/img/img32.jpg");
   background-size: contain;
+  background-repeat: repeat;
   height: 100%;
-  overflow: scroll;
+  overflow: auto;
 }
 .wrapper-1 {
   margin-top: 200px;
@@ -56,12 +57,7 @@ p {
   border-style: outset;
   background: linear-gradient(white, white, moccasin);
 }
-ion-slide {
-  background: linear-gradient(black, white);
-}
-::ng-deep .swiper-wrapper {
-  height: 390px;
-}
+
 .next,
 .prev {
   background-color: white;
@@ -89,7 +85,7 @@ ion-slide {
   height: 300px;
 }
 .panel {
-  margin: 50px;
+  margin: 50px 75px;
 }
 ::ng-deep.mat-expansion-panel-header {
   height: 100px;
@@ -103,12 +99,13 @@ mat-expansion-panel-header,
   font-weight: 400;
 }
 .mat-display-3 {
-  margin: 50px;
+  margin: 50px 75px;
   font-weight: 500;
   background: white;
   padding: 0 30px;
   border: 1.5px solid;
   color: black;
+  font-size: 40px;
 }
 .select {
   padding: 20px;

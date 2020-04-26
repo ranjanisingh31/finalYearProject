@@ -22,6 +22,9 @@ import { HTTP_INTERCEPTORS, HttpClientModule } from "@angular/common/http";
 import { TokenInterceptorService } from "./_services_guard_interceptor/token-interceptor.service";
 import { ChauffeurDriveDetailsComponent } from './_vehicleData/chauffeur-drive-details/chauffeur-drive-details.component';
 import { SelfDriveConfirmDialogComponent } from './_vehicleData/self-drive-confirm-dialog/self-drive-confirm-dialog.component';
+import { ChauffeurDriveConfirmDialogComponent } from './_vehicleData/chauffeur-drive-confirm-dialog/chauffeur-drive-confirm-dialog.component';
+import { ChauffeurDriveInfoDialogComponent } from './_vehicleData/chauffeur-drive-info-dialog/chauffeur-drive-info-dialog.component';
+import { ThankYouPageComponent } from './_dashboard/thank-you-page/thank-you-page.component';
 
 @NgModule({
   declarations: [
@@ -39,6 +42,9 @@ import { SelfDriveConfirmDialogComponent } from './_vehicleData/self-drive-confi
     TrackVehicleComponent,
     ChauffeurDriveDetailsComponent,
     SelfDriveConfirmDialogComponent,
+    ChauffeurDriveConfirmDialogComponent,
+    ChauffeurDriveInfoDialogComponent,
+    ThankYouPageComponent,
   ],
   imports: [
     BrowserModule,

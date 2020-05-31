@@ -1,0 +1,25 @@
+mat-form-field {
+  width: 245px;
+  font-size: 16px;
+}
+
+mat-card {
+  width: 322px;
+  height: 325;
+  border: 0.5px solid lightgray;
+}
+
+.actions {
+  color: white;
+}
+
+.actions>button {
+  width: 76px;
+  font-size: 13px;
+  margin: 10px 5px;
+}
+
+h2 {
+  font-weight: 700;
+  text-shadow: 5px 3px 3px lightgrey;
+}

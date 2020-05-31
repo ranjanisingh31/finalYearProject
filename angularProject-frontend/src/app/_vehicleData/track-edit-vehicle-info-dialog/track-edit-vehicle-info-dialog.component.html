@@ -1,0 +1,112 @@
+<div class="dialog">
+    <h2 mat-dialog-title="mat-dialog-title" style="margin-bottom: 0px;">
+        <mat-icon style="margin:0px 15px;"> edit
+        </mat-icon>EDIT
+    </h2>
+    <mat-dialog-content>
+        <mat-card>
+            <mat-card-content>
+                <mat-tab-group>
+                    <form [formGroup]="vehicleDataForm">
+                        <mat-tab label="Main">
+                            <ul type="none">
+                                <li>
+                                    <mat-form-field>
+                                        <mat-label> Vehicle Plan </mat-label>
+                                        <input type="text" matInput="matInput" readOnly="readOnly"
+                                            formControlName="vehiclePlan" />
+                                    </mat-form-field>
+                                </li>
+                                <div *ngIf="!dialog_data.edit; then thenBlock;else elseBlock"> </div>
+                                <ng-template #thenBlock>
+                                    <li>
+                                        <mat-form-field>
+                                            <mat-label> User Id </mat-label>
+                                            <mat-select formControlName="userId">
+                                                <mat-option>Select any</mat-option>
+                                                <mat-option *ngFor="let userID of userIds" value="{{userID}}">
+                                                    {{userID}}
+                                                </mat-option>
+                                            </mat-select>
+                                        </mat-form-field>
+                                    </li>
+                                </ng-template>
+                                <ng-template #elseBlock>
+                                    <li>
+                                        <mat-form-field>
+                                            <mat-label>User Id</mat-label>
+                                            <input type="text" matInput formControlName='userId' readonly />
+                                        </mat-form-field>
+                                    </li>
+                                </ng-template>
+                                <li>
+                                    <mat-form-field>
+                                        <mat-label> Vehicle Name </mat-label>
+                                        <input type="text" matInput="matInput" formControlName="vehicleName" />
+                                    </mat-form-field>
+                                </li>
+                                <li>
+                                    <mat-form-field>
+                                        <mat-label>Expiration Date</mat-label> <input type="text" readonly="readonly"
+                                            matInput="matInput" formControlName="expirationDate" />
+                                    </mat-form-field>
+                                </li>
+                            </ul>
+                        </mat-tab>
+                        <mat-tab label="Icon">
+
+                            <ul type="none">
+                                <li>
+                                    <mat-form-field>
+                                        <mat-label>Icon Color</mat-label>
+                                        <mat-select formControlName="iconColor">
+                                            <mat-option>Select any</mat-option>
+                                            <mat-option *ngFor="let color of colors" value="{{color.name}}">
+                                                {{color.name}} </mat-option>
+                                        </mat-select>
+                                    </mat-form-field>
+                                </li>
+                                <li>
+                                    <mat-form-field>
+                                        <mat-label> Moving </mat-label>
+                                        <mat-select formControlName="moving">
+                                            <mat-option>Select any</mat-option>
+                                            <mat-option *ngFor="let color of colors" value="{{color.name}}">
+                                                {{color.name}} </mat-option>
+                                        </mat-select>
+                                    </mat-form-field>
+                                </li>
+                                <li>
+                                    <mat-form-field>
+                                        <mat-label>Stopped</mat-label>
+                                        <mat-select formControlName="stopped">
+                                            <mat-option> Select any </mat-option>
+                                            <mat-option *ngFor="let color of colors" value="{{color.name}}">
+                                                {{color.name}}</mat-option>
+                                        </mat-select>
+                                    </mat-form-field>
+                                </li>
+                                <li>
+                                    <mat-form-field>
+                                        <mat-label> Offline </mat-label>
+                                        <mat-select formControlName="offline">
+                                            <mat-option>Select any</mat-option>
+                                            <mat-option *ngFor="let color of colors" value="{{color.name}}">
+                                                {{color.name}} </mat-option>
+                                        </mat-select>
+                                    </mat-form-field>
+                                </li>
+                            </ul>
+                        </mat-tab>
+                    </form>
+                </mat-tab-group>
+            </mat-card-content>
+        </mat-card>
+        <div class="actions">
+            <button mat-stroked-button="mat-stroked-button" style="background-color:deepskyblue;" (click)="save()"
+                [disabled]="!vehicleDataForm.valid">SAVE</button> <button mat-stroked-button="mat-stroked-button"
+                style="background-color: gray;" (click)="close()"> CANCEL </button>
+            <button mat-stroked-button="mat-stroked-button" style="background-color: red;" (click)="delete()"
+                [disabled]="deleteButtonDisable">DELETE</button> </div>
+    </mat-dialog-content>
+</div>

@@ -6,6 +6,7 @@ import { MatDialog } from "@angular/material/dialog";
 import { ChauffeurDriveInfoDialogComponent } from "../chauffeur-drive-info-dialog/chauffeur-drive-info-dialog.component";
 import { vehicleDetails } from "src/app/_interfaces/vehicleDetails";
 import { SelfDriveService } from "src/app/_services_guard_interceptor/self-drive.service";
+import { SigninAuthService } from "src/app/_services_guard_interceptor/signin-auth.service";
 
 @Component({
   selector: "app-chauffeur-drive-details",
@@ -17,8 +18,9 @@ export class ChauffeurDriveDetailsComponent implements OnInit {
     private _chauffeurDriveService: ChauffeurDriveService,
     private fb: FormBuilder,
     private dialog: MatDialog,
-    private _selfDriveService: SelfDriveService
-  ) {}
+    private _selfDriveService: SelfDriveService,
+    private _signinAuthService: SigninAuthService
+  ) { }
   public min = 0;
   public max = 1;
   next() {
@@ -56,7 +58,12 @@ export class ChauffeurDriveDetailsComponent implements OnInit {
     email: ["", [Validators.required, Validators.email]],
     mobile: [
       "",
-      [Validators.required, Validators.minLength(10), Validators.maxLength(10)],
+      [
+        Validators.required,
+        Validators.minLength(10),
+        Validators.maxLength(10),
+        Validators.pattern("^[0-9]*$"),
+      ],
     ],
     gender: ["", [Validators.required]],
     dob: ["", Validators.required],
@@ -93,6 +100,9 @@ export class ChauffeurDriveDetailsComponent implements OnInit {
   ngOnInit(): void {
     this._selfDriveService.getVehicleDetails().subscribe((res) => {
       this.vehicleDetails = res;
+    });
+    this.personalDetailsForm.patchValue({
+      email: this._signinAuthService.getVerifiedEmail(),
     });
   }
 }

@@ -1,0 +1,17 @@
+<mat-dialog-content>
+  <div style="float: right;">
+    <button mat-icon-button (click)="onClose()">
+      <mat-icon>close</mat-icon>
+    </button>
+  </div>
+  <div class="mat-display-1">
+    Your <span style="font-weight: 800;">{{ data.vehicle }}</span> plan has been
+    activated.
+  </div>
+  <div class="image"><img src="/assets/img/img_check.png" alt="img" /></div>
+  <div style="margin-top: 50px;">
+    <button style="width: 150px; font-size: 17px;" (click)="start()" mat-stroked-button>
+      Start Tracking
+    </button>
+  </div>
+</mat-dialog-content>

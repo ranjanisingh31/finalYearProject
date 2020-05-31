@@ -1,17 +1,24 @@
 const express = require("express");
 const cors = require("cors");
 const body = require("body-parser");
-const api = require("./routes/api.js");
-const nodemailer = require("nodemailer");
+const connectDB = require('./config/database');
+const dotenv = require("dotenv");
 const app = express();
+const api = require("./routes/api.js");
 app.use(cors());
 app.use(body.json());
 app.use("/api", api);
 
-app.get("/", (err, res) => {
-  res.send("hello from server");
+dotenv.config({ path: './config/config.env' });
+connectDB();
+const PORT = process.env.PORT || 3000;
+let server = app.listen(PORT, function () {
+    console.log(`server running in ${
+        process.env.NODE_ENV
+        } mode on port ${PORT}`);
+
 });
 
-app.listen(3000, function () {
-  console.log("server running on localhost");
-});
+const io = require('socket.io')(server);
+const socketModule = require('./socket/socket-io')(io);
+

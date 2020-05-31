@@ -1,1 +1,321 @@
-<p>track-vehicle works!</p>
+<div class="wrapper">
+  <app-navbar></app-navbar>
+  <div class="wrapper-1">
+    <div class="row">
+      <div class="track" (click)="track()"></div>
+      <h1 style="
+          color: white;
+          font-weight: 500;
+          text-shadow: 4px 4px 4px #0c0c0c;
+          font-size: 30px;
+        ">
+        TRACK
+      </h1>
+      <span style="color: white; font-size: 20px; font-weight: 300;">
+        Track vehicles using AWS.<br />
+        Tracking would be done using co-ordinates sent by the driver's web
+        application.<br />
+        The location co-ordinates could be sent into mongoDB Atlas where the
+        latest location of driver can be updated.
+      </span>
+    </div>
+    <div class="row2">
+      <h1 style="font-size: 40px; padding: 40px 0px 5px 0px;">INDUSTRIES</h1>
+      <table>
+        <tbody>
+          <tr>
+            <td class="td">
+              <span>
+                <img src="/assets/img/img_smallB.png" alt="img" />
+                <h1>SMALL BUSINESS</h1>
+                <p>
+                  We help small to medium businesses increase profitability by
+                  helping them optimise their workforce and improve operational
+                  efficiency.
+                </p>
+              </span>
+            </td>
+            <td class="td">
+              <span>
+                <img src="/assets/img/img_cargoL.png" alt="img" />
+                <h1>CARGO & LOGISTICS</h1>
+                <p>
+                  Companies can automate their billing and payment of leased
+                  vehicles by using our services.We provide accurate tracking of
+                  their fleet from web.
+                </p>
+              </span>
+            </td>
+            <td class="td">
+              <span>
+                <img src="/assets/img/img_homeC.png" alt="img" />
+                <h1>HOMECARE SERVICES</h1>
+                <p>
+                  Healthcare service providers like Portea Medicals manage their
+                  Health Service Personnels and deliver best quality services to
+                  its customers...
+                </p>
+              </span>
+            </td>
+            <td class="td">
+              <span>
+                <img src="/assets/img/img_taxiD.png" alt="img" />
+                <h1>TAXI DISPATCH</h1>
+                <p>
+                  The taxi dispatch system helps any taxi operator to streamline
+                  their operations.It gives real time updates on taxi trip
+                  schedules, distance covered...
+                </p>
+              </span>
+            </td>
+            <td class="td" style="border-right: 0px;">
+              <span>
+                <img src="/assets/img/img_deliveryC.png" alt="img" />
+                <h1>DELIVERY COMPANIES</h1>
+                <p>
+                  Helps Delivery Companies manage their orders and delivery
+                  workforce, schedule and dispatch orders, route optimisation
+                  and improve their ontime delivery matrix.
+                </p>
+              </span>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="row4" id="stepper">
+
+      <mat-horizontal-stepper labelPosition="bottom" linear #stepper>
+
+        <mat-step label="Choose Plan" [stepControl]="checkPlan_track">
+          <form [formGroup]="checkPlan_track">
+            <div class="grid">
+              <mat-grid-list cols="4" rowHeight="270px">
+                <mat-grid-tile *ngFor="let plan of planDetails">
+                  <mat-card>
+                    <mat-card-content style="font-family: serif;">
+                      <div style="
+                          font-size: 22px;
+                          margin-bottom: 5px;
+                          font-weight: 600;
+                        ">
+                        {{ plan.vehicle }}
+                      </div>
+                      <div style="font-size: 18px; color: darkgray;">
+                        {{ plan.type }}
+                      </div>
+                      <div style="
+                          font-size: 23px;
+                          color: white;
+                          font-weight: 600;
+                          background: maroon;
+                          height: 40px;
+                          padding-top: 10px;
+                          margin: 20px -2px 5px -3px;
+                        ">
+                        {{ plan.price | currency: "INR" }}/monthly
+                      </div>
+                      <div style="
+                          font-size: 18px;
+                          color: darkgray;
+                          font-weight: 200;
+                        ">
+                        paid&nbsp;{{ plan.intervals }}
+                      </div>
+                    </mat-card-content>
+                    <mat-card-actions>
+
+                      <mat-checkbox color="warn" formControlName="check" [checked]="plan.vehicle === data"
+                        (change)="checkUncheckAll(plan)" style="background-color: white;">
+                      </mat-checkbox>
+                    </mat-card-actions>
+                  </mat-card>
+                </mat-grid-tile>
+              </mat-grid-list>
+              <div>
+
+                <button mat-stroked-button matStepperNext type="button" style="margin: -35px 1226px 15px;"
+                  class="control">
+                  Next
+                </button>
+              </div>
+            </div>
+          </form>
+        </mat-step>
+        <mat-step label="Personal Information" [stepControl]="userDetails_track">
+          <form [formGroup]="userDetails_track">
+            <div class="row3">
+              <table>
+                <tbody>
+                  <tr>
+                    <td style="
+                        border-right: 1px solid lightgray;
+                        padding-right: 60px;
+                      ">
+                      <ul type="none">
+                        <li class="list">
+                          <mat-form-field appearance="outline">
+                            <mat-label>Full Name</mat-label>
+                            <input matInput type="text" formControlName="fullName" />
+                          </mat-form-field>
+                          <mat-form-field appearance="outline">
+                            <mat-label>Email</mat-label>
+                            <input matInput formControlName="email" type="text" readonly />
+                          </mat-form-field>
+                          <mat-form-field appearance="outline">
+                            <mat-label>Mobile Number</mat-label>
+                            <input matInput formControlName="mob" type="text" />
+                          </mat-form-field>
+                        </li>
+                        <li class="list">
+                          <mat-form-field appearance="outline" style="width: 670px;">
+                            <mat-label>Address</mat-label>
+                            <textarea matInput formControlName="address"></textarea>
+                          </mat-form-field>
+                        </li>
+                        <li class="list">
+                          <mat-form-field appearance="outline">
+                            <mat-label>City</mat-label>
+                            <input matInput formControlName="city" type="text" />
+                          </mat-form-field>
+                          <mat-form-field appearance="outline">
+                            <mat-label>State</mat-label>
+                            <input matInput formControlName="state" type="text" />
+                          </mat-form-field>
+                          <mat-form-field appearance="outline">
+                            <mat-label>Postal Code</mat-label>
+                            <input matInput formControlName="postalCode" type="text" />
+                          </mat-form-field>
+                        </li>
+                      </ul>
+                    </td>
+
+                    <td style="padding: 10px;">
+                      <ul type="none">
+                        <li class="list" style="font-size: 18px; font-weight: 100;">
+                          <div style="margin-top: 39px;">
+                            <mat-radio-group formControlName="trackFor">
+                              <mat-radio-button value="private" style="margin-right: 70px;">Private</mat-radio-button>
+                              <mat-radio-button value="business">Business</mat-radio-button>
+                            </mat-radio-group>
+                          </div>
+                        </li>
+                        <li class="list" style="margin-top: 10px;">
+                          <mat-form-field appearance="outline">
+                            <mat-label>Company Name</mat-label>
+                            <input matInput formControlName="companyName" type="text" placeholder="(optional)" />
+                          </mat-form-field>
+                          <mat-form-field appearance="outline">
+                            <mat-label>Comapny URL</mat-label>
+                            <input type="url" formControlName="url" matInput placeholder="(optional)" />
+                          </mat-form-field>
+                        </li>
+
+                        <li class="list">
+                          <mat-form-field appearance="outline" style="width: 440px;">
+                            <mat-label>Company Description</mat-label>
+                            <textarea matInput formControlName="companyDesc" placeholder="(optional)"></textarea>
+                          </mat-form-field>
+                        </li>
+                      </ul>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+
+              <div>
+                <span>
+                  <button mat-stroked-button matStepperPrevious type="button"
+                    style="margin-left: 1022px; margin-right: 35px;" class="control">
+                    Previous
+                  </button></span>
+                <span>
+                  <!-- [disabled]="!userDetails_track.valid" -->
+                  <button mat-stroked-button matStepperNext type="button" class="control" (click)="onSubmit()">
+                    Next
+                  </button></span>
+              </div>
+            </div>
+          </form>
+        </mat-step>
+
+        <mat-step label="Make a Payment">
+          <div class="row5" *ngIf="data != null">
+            <div class="row6">
+              <h1>YOUR ORDER</h1>
+              <div>
+                <img src="/assets/img/img_offer4.png" alt="img" style="
+                    width: 170px;
+                    position: absolute;
+                    z-index: 1;
+                    margin: 25px 79px;
+                  " />
+              </div>
+
+              <table style="margin: 35px 90px;">
+                <tbody>
+                  <tr>
+                    <td style="
+                        background: linear-gradient(lightseagreen, black);
+                        font-size: 25px;
+                        padding: 100px 20px 55px 20px;
+                        border: 1px solid darkgray;
+                      ">
+                      <div style="
+                          color: white;
+                          font-weight: 500;
+                          text-shadow: 5px -2px 3px black;
+                        ">
+                        <span style="margin-right: 66px;">{{ data1["vehicle"] }}&nbsp;plan</span><span>{{ data1["price"] | currency: "INR" }}&nbsp;{{
+                            data1["intervals"]
+                          }}</span>
+                      </div>
+                    </td>
+                    <td>
+                      <div style="padding: 0px;">
+                        <ul type="none" class="total">
+                          <li>
+                            <div>
+                              <span>Total:</span>
+                              <span class="space">{{
+                                data1["price"] | currency: "INR"
+                              }}</span>
+                            </div>
+                          </li>
+                          <li>
+                            <div>
+                              <span>GST:</span><span class="space">{{ gst }}%</span>
+                            </div>
+                          </li>
+                          <li>
+                            <div>
+                              <span>Grand Total:</span><span class="space">{{grandT}}</span>
+                            </div>
+                          </li>
+                        </ul>
+                      </div>
+                    </td>
+                    <td>
+                      <div style="margin-left: 35px;">
+                        <button mat-stroked-button (click)="confirm()" style="
+                            padding: 5px 33px;
+                            background-color: darkred;
+                            color: white;
+                            font-size: 17px;
+                            text-shadow: 0px 5px 3px black;
+                          " disabled="{{ count }}">
+                          CONFIRM BOOKING
+                        </button>
+                      </div>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </mat-step>
+      </mat-horizontal-stepper>
+    </div>
+  </div>
+</div>

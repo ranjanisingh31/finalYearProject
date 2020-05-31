@@ -5,6 +5,7 @@ import { SelfDriveInfoDialogComponent } from "../self-drive-info-dialog/self-dri
 import { FormBuilder, Validators } from "@angular/forms";
 import { vehicleDetails } from "src/app/_interfaces/vehicleDetails";
 import { SelfDriveConfirmDialogComponent } from "../self-drive-confirm-dialog/self-drive-confirm-dialog.component";
+import { SigninAuthService } from "src/app/_services_guard_interceptor/signin-auth.service";
 
 @Component({
   selector: "app-self-drive-details",
@@ -15,8 +16,9 @@ export class SelfDriveDetailsComponent implements OnInit {
   constructor(
     private _selfDriveService: SelfDriveService,
     private dialog: MatDialog,
-    private fb: FormBuilder
-  ) {}
+    private fb: FormBuilder,
+    private _signinAuthService: SigninAuthService
+  ) { }
   public min = 0;
   public max = 1;
   next() {
@@ -51,11 +53,16 @@ export class SelfDriveDetailsComponent implements OnInit {
   }
   //form
   public personalDetailsForm = this.fb.group({
-    fullName: ["", Validators.required],
+    fullName: ["", Validators.required, Validators.pattern("^[a-zA-Z ]*$")],
     email: ["", [Validators.required, Validators.email]],
     mobile: [
       "",
-      [Validators.required, Validators.minLength(10), Validators.maxLength(10)],
+      [
+        Validators.required,
+        Validators.minLength(10),
+        Validators.maxLength(10),
+        Validators.pattern("^[0-9]*$"),
+      ],
     ],
     gender: ["", [Validators.required]],
     dob: ["", Validators.required],
@@ -91,6 +98,9 @@ export class SelfDriveDetailsComponent implements OnInit {
   ngOnInit(): void {
     this._selfDriveService.getVehicleDetails().subscribe((res) => {
       this.vehicleDetails = res;
+    });
+    this.personalDetailsForm.patchValue({
+      email: this._signinAuthService.getVerifiedEmail(),
     });
   }
 }

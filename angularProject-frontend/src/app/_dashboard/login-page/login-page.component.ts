@@ -15,7 +15,7 @@ export class LoginPageComponent implements OnInit {
     private _signinService: SigninAuthService,
     public dialog: MatDialog,
     @Inject(MAT_DIALOG_DATA) public data: any
-  ) {}
+  ) { }
   public hide = true;
 
   openResetPass() {
@@ -56,10 +56,10 @@ export class LoginPageComponent implements OnInit {
   });
 
   onSubmitLogin() {
-    console.log(this.loginForm.value);
     this._signinService.loginUser(this.loginForm.value).subscribe(
       (res) => {
         localStorage.setItem("token", res.token);
+        localStorage.setItem("email", res.email);
         alert(res.message);
       },
       (err) => {
@@ -67,7 +67,6 @@ export class LoginPageComponent implements OnInit {
           if (err.status === 401) {
             alert(err.error.message + " Enter registered Email.");
           } else {
-            console.log(err);
             alert(err.statusText + " Try Again!!!");
           }
         }
@@ -77,16 +76,16 @@ export class LoginPageComponent implements OnInit {
   }
   //registration
   registerationForm = this.fb.group({
-    fullName: ["", Validators.required],
+    fullName: ["", [Validators.required]],
     email: ["", [Validators.required, Validators.email]],
     password: ["", [Validators.required]],
   });
 
   onSubmitRegister() {
-    console.log("value", this.registerationForm.value);
     this._signinService.registerUser(this.registerationForm.value).subscribe(
       (res) => {
         localStorage.setItem("token", res.token);
+        localStorage.setItem("email", res.email);
         alert(res.message);
       },
       (err) => {
@@ -108,21 +107,16 @@ export class LoginPageComponent implements OnInit {
   });
 
   onSubmitReset() {
-    console.log("value", this.resetPasswordForm.value);
     this._signinService.resetPassword(this.resetPasswordForm.value).subscribe(
       (res) => {
-        console.log("res", res);
         alert(res.message);
         this.openLogin();
       },
       (err) => {
-        console.log("err", err);
         if (err instanceof HttpErrorResponse) {
           if (err.status === 401) {
-            console.log("err1", err);
             alert(err.error.message);
           } else {
-            console.log("err", err);
             alert(err.statusText + ". Try Again!!!");
           }
         }
@@ -131,5 +125,5 @@ export class LoginPageComponent implements OnInit {
     );
   }
 
-  ngOnInit(): void {}
+  ngOnInit(): void { }
 }

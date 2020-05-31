@@ -11,51 +11,28 @@
         <div class="card-wrapper">
           <mat-card id="card">
             <mat-card-content>
-              <mat-icon
-                id="icon"
-                matTooltip="Info about the vehicle"
-                matTooltipPosition="after"
-                (click)="getInfo(detail)"
-              >
-                info</mat-icon
-              >
+              <mat-icon id="icon" matTooltip="Info about the vehicle" matTooltipPosition="after"
+                (click)="getInfo(detail)">
+                info</mat-icon>
               <img src="{{ detail.img }}" alt="img" mat-card-image />
               <mat-divider></mat-divider>
               <p class="mat-display-1">{{ detail.name }}</p>
               <p>Basic rental &nbsp;{{ detail.price | currency: "INR" }}</p>
-              <mat-card-actions align="center"
-                ><button
-                  mat-stroked-button
-                  id="btn"
-                  (click)="bookingDetails(detail)"
-                >
+              <mat-card-actions align="center"><button mat-stroked-button id="btn" (click)="bookingDetails(detail)">
                   BOOK
-                </button></mat-card-actions
-              >
+                </button></mat-card-actions>
             </mat-card-content>
           </mat-card>
         </div>
       </div>
       <span>
-        <button
-          [disabled]="!hideNext"
-          mat-icon-button
-          class="next"
-          (click)="next()"
-        >
+        <button [disabled]="!hideNext" mat-icon-button class="next" (click)="next()">
           <mat-icon>arrow_forward_ios</mat-icon>
-        </button></span
-      >
+        </button></span>
       <span>
-        <button
-          [disabled]="!hidePrev"
-          mat-icon-button
-          class="prev"
-          (click)="prev()"
-        >
+        <button [disabled]="!hidePrev" mat-icon-button class="prev" (click)="prev()">
           <mat-icon>arrow_back_ios</mat-icon>
-        </button></span
-      >
+        </button></span>
     </div>
     <div class="panel">
       <mat-accordion multi="true" *ngIf="toggle">
@@ -71,102 +48,78 @@
                 </div>
               </td>
               <td>
-                <tr>
-                  <td>
-                    <div class="content">
-                      <ul
-                        type="none"
-                        style="line-height: 30px; text-align: left;"
-                      >
-                        <li style="font-size: 25px; font-weight: 300;">
-                          {{ _detail.name }}
-                        </li>
-                        <li
-                          style="
+            <tr>
+              <td>
+                <div class="content">
+                  <ul type="none" style="line-height: 30px; text-align: left;">
+                    <li style="font-size: 25px; font-weight: 300;">
+                      {{ _detail.name }}
+                    </li>
+                    <li style="
                             font-size: 20px;
                             color: gray;
                             font-weight: 300;
-                          "
-                        >
-                          Basic Rental-<span style="color: red;">
-                            {{ _detail.price | currency: "INR" }}</span
-                          >
-                        </li>
-                      </ul>
-                    </div>
-                  </td>
-                </tr>
-                <mat-divider></mat-divider>
-                <tr>
-                  <td>
-                    <ul type="none">
-                      <li>
-                        <img
-                          class="info"
-                          src="./assets/img/auto.png"
-                          alt="img"
-                        />
-                      </li>
-                      <li class="title">Transmission</li>
-                      <li>
-                        <span class="value">{{ _detail.mode }}</span>
-                      </li>
-                    </ul>
-                  </td>
-                  <td style="border-left: 1px solid lightgray;">
-                    <ul type="none">
-                      <li>
-                        <img
-                          class="info"
-                          src="./assets/img/carDoor.png"
-                          alt="img"
-                        />
-                      </li>
-                      <li class="title">Doors</li>
-                      <li>
-                        <span class="value">{{ _detail.door }}</span>
-                      </li>
-                    </ul>
-                  </td>
-                </tr>
-                <tr>
-                  <td style="border-top: 1px solid lightgray;">
-                    <ul type="none">
-                      <li>
-                        <img
-                          class="info"
-                          src="./assets/img/carSeat.png"
-                          alt="img"
-                        />
-                      </li>
-                      <li class="title">Seat Capacity</li>
-                      <li>
-                        <span class="value">{{ _detail.seat }}</span>
-                      </li>
-                    </ul>
-                  </td>
-                  <td
-                    style="
+                          ">
+                      Basic Rental-<span style="color: red;">
+                        {{ _detail.price | currency: "INR" }}</span>
+                    </li>
+                  </ul>
+                </div>
+              </td>
+            </tr>
+            <mat-divider></mat-divider>
+            <tr>
+              <td>
+                <ul type="none">
+                  <li>
+                    <img class="info" src="./assets/img/auto.png" alt="img" />
+                  </li>
+                  <li class="title">Transmission</li>
+                  <li>
+                    <span class="value">{{ _detail.mode }}</span>
+                  </li>
+                </ul>
+              </td>
+              <td style="border-left: 1px solid lightgray;">
+                <ul type="none">
+                  <li>
+                    <img class="info" src="./assets/img/carDoor.png" alt="img" />
+                  </li>
+                  <li class="title">Doors</li>
+                  <li>
+                    <span class="value">{{ _detail.door }}</span>
+                  </li>
+                </ul>
+              </td>
+            </tr>
+            <tr>
+              <td style="border-top: 1px solid lightgray;">
+                <ul type="none">
+                  <li>
+                    <img class="info" src="./assets/img/carSeat.png" alt="img" />
+                  </li>
+                  <li class="title">Seat Capacity</li>
+                  <li>
+                    <span class="value">{{ _detail.seat }}</span>
+                  </li>
+                </ul>
+              </td>
+              <td style="
                       border-top: 1px solid lightgray;
                       border-left: 1px solid lightgray;
-                    "
-                  >
-                    <ul type="none">
-                      <li>
-                        <img
-                          class="info"
-                          src="./assets/img/luggage.png"
-                          alt="img"
-                        />
-                      </li>
-                      <li class="title">Luggage</li>
-                      <li>
-                        <span class="value">{{ _detail.luggage }}</span>
-                      </li>
-                    </ul>
-                  </td>
-                </tr>
+                    ">
+                <ul type="none">
+                  <li>
+                    <img class="info" src="./assets/img/luggage.png" alt="img" />
+                  </li>
+                  <li class="title">Luggage</li>
+                  <li>
+                    <span class="value">{{ _detail.luggage }}</span>
+                  </li>
+                </ul>
               </td>
+            </tr>
+            </td>
             </tr>
           </table>
         </mat-expansion-panel>
@@ -184,7 +137,7 @@
                   </mat-form-field>
                   <mat-form-field>
                     <mat-label>Email</mat-label>
-                    <input type="text" matInput formControlName="email" />
+                    <input type="text" matInput formControlName="email" readonly />
                   </mat-form-field>
                 </li>
                 <li>
@@ -200,19 +153,10 @@
                 <li>
                   <mat-form-field>
                     <mat-label>Date Of Birth</mat-label>
-                    <input
-                      type="text"
-                      matInput
-                      formControlName="dob"
-                      placeholder="DD/MM/YYYY"
-                    />
+                    <input type="text" matInput formControlName="dob" placeholder="DD/MM/YYYY" />
                   </mat-form-field>
-                  <button
-                    class="submit"
-                    [disabled]="!personalDetailsForm.valid"
-                    mat-stroked-button
-                    (click)="onSubmit()"
-                  >
+                  <button class="submit" [disabled]="!personalDetailsForm.valid" mat-stroked-button
+                    (click)="onSubmit()">
                     Submit
                   </button>
                 </li>

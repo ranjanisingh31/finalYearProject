@@ -27,7 +27,60 @@
             </div>
           </mat-tab>
           <mat-tab label="Track Your Vehicle?">
-            <div></div>
+            <table>
+              <tbody>
+                <tr>
+                  <td>
+                    <div class="track">
+                      <ul type="none">
+                        <li>
+                          <mat-icon>desktop_mac</mat-icon>
+                        </li>
+                        <li><span class="title">1-Page Dashboard</span></li>
+                        <li>
+                          <p>Monitor all your vehicles in a single page.</p>
+                        </li>
+                      </ul>
+                    </div>
+                  </td>
+                  <td>
+                    <div class="track">
+                      <ul type="none">
+                        <li>
+                          <mat-icon>important_devices</mat-icon>
+                        </li>
+                        <li><span class="title">Dedicated Server</span></li>
+                        <li>
+                          <p>100% own and dedicated server.</p>
+                        </li>
+                      </ul>
+                    </div>
+                  </td>
+                  <td>
+                    <div class="track">
+                      <ul type="none">
+                        <li>
+                          <mat-icon>layers</mat-icon>
+                        </li>
+                        <li><span class="title">API Integration</span></li>
+                        <li>
+                          <p>API integration to your server and application.</p>
+                        </li>
+                      </ul>
+                    </div>
+                  </td>
+                  <td>
+                    <button
+                      mat-stroked-button
+                      style="margin: 0px 40px;"
+                      (click)="onClick()"
+                    >
+                      Proceed
+                    </button>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
           </mat-tab>
         </mat-tab-group>
       </div>

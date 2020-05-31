@@ -25,6 +25,9 @@ import { SelfDriveConfirmDialogComponent } from './_vehicleData/self-drive-confi
 import { ChauffeurDriveConfirmDialogComponent } from './_vehicleData/chauffeur-drive-confirm-dialog/chauffeur-drive-confirm-dialog.component';
 import { ChauffeurDriveInfoDialogComponent } from './_vehicleData/chauffeur-drive-info-dialog/chauffeur-drive-info-dialog.component';
 import { ThankYouPageComponent } from './_dashboard/thank-you-page/thank-you-page.component';
+import { TrackVehicleBookingDialogComponent } from './_vehicleData/track-vehicle-booking-dialog/track-vehicle-booking-dialog.component';
+import { TrackSelectedPlanComponent } from './_vehicleData/track-selected-plan/track-selected-plan.component';
+import { TrackEditVehicleInfoDialogComponent } from './_vehicleData/track-edit-vehicle-info-dialog/track-edit-vehicle-info-dialog.component';
 
 @NgModule({
   declarations: [
@@ -45,6 +48,9 @@ import { ThankYouPageComponent } from './_dashboard/thank-you-page/thank-you-pag
     ChauffeurDriveConfirmDialogComponent,
     ChauffeurDriveInfoDialogComponent,
     ThankYouPageComponent,
+    TrackVehicleBookingDialogComponent,
+    TrackSelectedPlanComponent,
+    TrackEditVehicleInfoDialogComponent,
   ],
   imports: [
     BrowserModule,
@@ -65,4 +71,4 @@ import { ThankYouPageComponent } from './_dashboard/thank-you-page/thank-you-pag
   ],
   bootstrap: [AppComponent],
 })
-export class AppModule {}
+export class AppModule { }

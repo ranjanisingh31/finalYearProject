@@ -18,6 +18,11 @@ import { MatStepperModule } from "@angular/material/stepper";
 import { MatDividerModule } from "@angular/material/divider";
 import { MatExpansionModule } from "@angular/material/expansion";
 import { MatTooltipModule } from "@angular/material/tooltip";
+import { MatCheckboxModule } from "@angular/material/checkbox";
+import { MatTreeModule } from '@angular/material/tree';
+import { MatAutocompleteModule } from "@angular/material/autocomplete";
+import { MatListModule } from "@angular/material/list";
+import { MatRippleModule } from "@angular/material/core";
 
 const material = [
   MatButtonModule,
@@ -38,6 +43,11 @@ const material = [
   MatDividerModule,
   MatExpansionModule,
   MatTooltipModule,
+  MatCheckboxModule,
+  MatTreeModule,
+  MatAutocompleteModule,
+  MatListModule,
+  MatRippleModule
 ];
 
 @NgModule({
@@ -45,4 +55,4 @@ const material = [
   imports: [material, CommonModule],
   exports: [material],
 })
-export class MaterialModuleModule {}
+export class MaterialModuleModule { }

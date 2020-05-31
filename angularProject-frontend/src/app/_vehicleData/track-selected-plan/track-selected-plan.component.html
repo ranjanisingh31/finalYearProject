@@ -1,0 +1,53 @@
+<div class="wrapper">
+    <app-navbar></app-navbar>
+    <div id="_map">
+        <div class="panel">
+            <mat-card>
+                <mat-card-content>
+                    <form>
+                        <mat-form-field> <input type="text" placeholder="Pick one" matInput="matInput"
+                                [formControl]="myControl" [matAutocomplete]="auto" #input (focus)="activeList=''">
+                            <mat-autocomplete #auto="matAutocomplete">
+                                <mat-option *ngFor="let option of filteredOptions | async" [value]="option.vName"
+                                    (click)="activeList=option">
+                                    {{option.vName}}</mat-option>
+                            </mat-autocomplete>
+                        </mat-form-field> <button mat-mini-fab style="margin-left: 15px;" (click)="add()">
+                            <mat-icon>add</mat-icon>
+                        </button>
+                    </form>
+                    <div>
+                        <mat-list *ngFor="let item of options">
+                            <mat-list-item
+                                [ngStyle]="input.value===item.vName || activeList === item?{'background-color':'lightgoldenrodyellow'} : {'background-color': 'white'}"
+                                style="border-bottom: 1px solid lightgray;" (click)="input.value='';activeList=item">
+                                <mat-icon matRipple matListIcon style="cursor: pointer;" (click)="edit(item.vName)">
+                                    create</mat-icon>
+                                <div matLine>{{item.vName}}</div>
+                                <span class="dot1" [style.backgroundColor]="item.state"></span>
+                                <span class="dot2" [style.backgroundColor]="item.state"></span>
+                                <span class="dot3" [style.backgroundColor]="item.state"></span>
+                            </mat-list-item>
+
+                        </mat-list>
+                    </div>
+                </mat-card-content>
+                <mat-card-actions>
+                    <mat-form-field style="margin: 0px 5px;width: 240px;">
+                        <mat-label>Styles</mat-label>
+                        <mat-select (selectionChange)="changeStyle($event)">
+                            <mat-option> Select any </mat-option>
+                            <mat-option *ngFor="let style of styles" value="{{style.type}}">{{style.name}}</mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                </mat-card-actions>
+                <div *ngIf="!status; then thenBlock; else elseBlock"></div>
+                <ng-template #thenBlock> <button (click)="start()" mat-stroked-button class="startBtn"> START TRACKING
+                    </button></ng-template>
+                <ng-template #elseBlock> <button (click)="start()" mat-stroked-button class="startBtn"> STOP TRACKING
+                    </button></ng-template>
+            </mat-card>
+        </div>
+    </div>
+    <button (click)="t()">trackLine</button>
+</div>

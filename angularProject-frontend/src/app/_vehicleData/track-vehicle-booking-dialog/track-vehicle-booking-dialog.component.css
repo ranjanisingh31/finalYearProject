@@ -1,0 +1,13 @@
+img {
+  width: 200px;
+}
+.image {
+  margin-top: -35px;
+  margin-left: 35px;
+}
+.mat-display-1 {
+  margin-top: 40px;
+}
+mat-dialog-content {
+  text-align: center;
+}

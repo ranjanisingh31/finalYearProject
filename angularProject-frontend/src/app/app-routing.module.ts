@@ -6,6 +6,9 @@ import { SelfDriveDetailsComponent } from "./_vehicleData/self-drive-details/sel
 import { SigninGuardGuard } from "./_services_guard_interceptor/signin-guard.guard";
 import { ChauffeurDriveDetailsComponent } from "./_vehicleData/chauffeur-drive-details/chauffeur-drive-details.component";
 import { ThankYouPageComponent } from "./_dashboard/thank-you-page/thank-you-page.component";
+import { TrackVehicleComponent } from "./_vehicleData/track-vehicle/track-vehicle.component";
+import { TrackVehicleBookingDialogComponent } from "./_vehicleData/track-vehicle-booking-dialog/track-vehicle-booking-dialog.component";
+import { TrackSelectedPlanComponent } from "./_vehicleData/track-selected-plan/track-selected-plan.component";
 
 const routes: Routes = [
   { path: "", component: VideosComponent },
@@ -23,6 +26,14 @@ const routes: Routes = [
   {
     path: "ThankYou-Page",
     component: ThankYouPageComponent,
+  },
+  {
+    path: "track-vehicle",
+    component: TrackVehicleComponent,
+  },
+  {
+    path: "track-selected-plan",
+    component: TrackSelectedPlanComponent,
   },
 ];
 

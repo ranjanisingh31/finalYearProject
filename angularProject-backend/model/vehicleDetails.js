@@ -8,6 +8,9 @@ const vehicleSchema = new Schema({
   door: Number,
   seat: Number,
   luggage: Number,
+  city: [String],
+  useCase: String,
+  type: String
 });
 
 module.exports = mongoose.model(

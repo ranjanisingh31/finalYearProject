@@ -16,6 +16,11 @@ const selfDriveSchema = new Schema({
   selectedVehicleDetails: {
     _id: String,
   },
+  createdAt: {
+    type: Date,
+    default: Date.now()
+  },
+  total: Number
 });
 
 module.exports = mongoose.model(

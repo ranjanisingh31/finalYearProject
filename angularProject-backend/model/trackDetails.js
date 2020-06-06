@@ -2,6 +2,7 @@ const mongoose = require("mongoose");
 
 const Schema = mongoose.Schema;
 const trackSchema = new Schema({
+    total: Number,
     address: {
         type: String,
         required: [true]

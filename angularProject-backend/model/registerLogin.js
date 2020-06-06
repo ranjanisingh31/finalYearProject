@@ -13,5 +13,5 @@ const registerSchema = new Schema({
 module.exports = mongoose.model(
   "register",
   registerSchema,
-  "registertionDetails"
+  "registrationDetails"
 );

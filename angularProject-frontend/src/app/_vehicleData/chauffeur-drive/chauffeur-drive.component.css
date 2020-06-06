@@ -21,6 +21,7 @@ mat-form-field,
 .ff {
   margin-right: 10px;
 }
-::ng-deep .material-icons {
-  font-size: 30px !important;
+
+.iconMaterial{
+  font-size: 30px;
 }

@@ -1,12 +1,12 @@
 <div class="wrapper">
   <app-navbar></app-navbar>
   <div class="wrapper-1">
-    <span class="mat-display-3">SELF-DRIVE</span>
+    <div class="mat-display-3">SELF - DRIVE</div>
     <div class="details">
       <app-self-drive></app-self-drive>
     </div>
 
-    <div class="select">
+    <div class="select" *ngIf="toggleVehicle">
       <span>Select Vehicle</span>
       <div class="ions" *ngFor="let detail of vehicleDetails | slice: min:max">
         <div class="card-wrapper">
@@ -14,7 +14,7 @@
             <mat-card-content>
               <mat-icon id="icon" matTooltip="Info about the vehicle" matTooltipPosition="after"
                 (click)="getInfo(detail)">info</mat-icon>
-              <img src="{{ detail.img }}" alt="img" mat-card-image />
+              <img src="{{detail.img}}" alt="img" mat-card-image />
               <mat-divider></mat-divider>
               <p class="mat-display-1">{{ detail.name }}</p>
               <p>Basic rental &nbsp;{{ detail.price | currency: "INR" }}</p>
@@ -44,10 +44,10 @@
             <tr>
               <td style="border-right: 1px solid lightgray;">
                 <div class="image">
-                  <img src="{{ _detail.img }}" alt="img" />
+                  <img src="{{_detail.img}}" alt="img" />
                 </div>
               </td>
-              <td>
+              <td style="background-color: white;">
             <tr>
               <td>
                 <div class="content">

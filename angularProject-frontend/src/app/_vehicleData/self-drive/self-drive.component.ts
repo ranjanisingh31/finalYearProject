@@ -70,10 +70,57 @@ export class SelfDriveComponent implements OnInit {
         },
       });
     }
+    this._selfDriveService.toggle = true;
+
   }
+  public vehicles = [];
+  //on city change -> change vehicle
+  cityChange(event) {
+    this.vehicles = [];
+    var details = [{}];
+    details = this._selfDriveService.vehicleDetails;
+    for (let i = 0; i < details.length; i++) {
+      for (let j = 0; j < details[i]["city"].length; j++) {
+        if (details[i]["city"][j] === event.value) {
+          this.vehicles.push(details[i]["name"]);
+        }
+      }
+    }
+    this._selfDriveService.selectedVehicle = this.vehicles;
+  }
+  cityChange1(value) {
+    this.vehicles = [];
+    var details = [{}];
+    details = this._selfDriveService.vehicleDetails;
+    if (details.length !== 1) {
+      for (let i = 0; i < details.length; i++) {
+        for (let j = 0; j < details[i]["city"].length; j++) {
+          if (details[i]["city"][j] === value) {
+            this.vehicles.push(details[i]["name"]);
+          }
+        }
+      }
+      this._selfDriveService.selectedVehicle = this.vehicles;
+    }
+  }
+
   public formData = {};
+  public city = [];
+
   ngOnInit(): void {
+
+    this._selfDriveService.getVehicleDetails("self-drive").subscribe((res) => {
+      this._selfDriveService.vehicleDetails = res;
+      for (let i = 0; i < res.length; i++) {
+        for (let j = 0; j < res[i].city.length; j++) {
+          this._selfDriveService.city.push(res[i].city[j]);
+          this._selfDriveService.city = this._selfDriveService.city.filter((el, i, a) => i === a.indexOf(el));
+        }
+      }
+      this.city = this._selfDriveService.city;
+    });
     this.formData = this._selfDriveService.getUserRequirements();
+    this.cityChange1(this.formData["city"]);
     this.selfDriveForm.patchValue({
       city: this.formData["city"],
       deliveryAddress: this.formData["deliveryAddress"],

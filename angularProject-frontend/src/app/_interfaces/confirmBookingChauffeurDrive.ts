@@ -26,4 +26,5 @@ export interface confirmBookingChauffeurDrive {
     luggage: number;
   };
   message: string;
+  total: number;
 }

@@ -2,8 +2,9 @@
   font-size: 15px !important;
   color: black !important;
 }
-.material-icons {
+.mIcon {
   font-size: 40px !important;
+  color:salmon;
 }
 mat-card {
   height: 250px;
@@ -30,4 +31,8 @@ p {
   padding-top: 5px;
   font-size: 16px;
   font-weight: 500;
+  color:darkslategray;
+}
+td{
+  width:290px;
 }

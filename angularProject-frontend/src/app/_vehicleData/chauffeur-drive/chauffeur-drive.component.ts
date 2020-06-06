@@ -120,6 +120,7 @@ export class ChauffeurDriveComponent implements OnInit {
   //authentication
   checkSignin() {
     if (this._signinService.loggedIn()) {
+      this._chauffeurDriveService.toggle = true;
       this.router.navigate(["/chauffeur-drive"]);
     } else {
       this.dialog.open(LoginPageComponent, {
@@ -132,9 +133,59 @@ export class ChauffeurDriveComponent implements OnInit {
       });
     }
   }
+  //on city change
+  public vehicles = [];
+  cityChange(event) {
+    this.vehicles = [];
+    var details = [{}];
+    details = this._chauffeurDriveService.vehicleDetails;
+    for (let i = 0; i < details.length; i++) {
+      for (let j = 0; j < details[i]["city"].length; j++) {
+        if (details[i]["city"][j] === event.value && details[i]["type"] === this.selectedRadio) {
+          this.vehicles.push(details[i]["name"]);
+        }
+      }
+    }
+
+    this._chauffeurDriveService.selectedVehicle = this.vehicles;
+  }
+
+  cityChange1(value) {
+    this.vehicles = [];
+    var details = [{}];
+    details = this._chauffeurDriveService.vehicleDetails;
+    if (details.length !== 1) {
+      for (let i = 0; i < details.length; i++) {
+        for (let j = 0; j < details[i]["city"].length; j++) {
+          if (details[i]["city"][j] === value && details[i]["type"] === this.selectedRadio) {
+            this.vehicles.push(details[i]["name"]);
+          }
+        }
+      } this._chauffeurDriveService.selectedVehicle = this.vehicles;
+    }
+  }
+  onchangeRadio() {
+    for (let i = 0; i < this._chauffeurDriveService.vehicleDetails.length; i++) {
+      for (let j = 0; j < this._chauffeurDriveService.vehicleDetails[i]["city"].length; j++) {
+        if (this._chauffeurDriveService.vehicleDetails[i]["type"] === this.selectedRadio) {
+          this._chauffeurDriveService.city.push(this._chauffeurDriveService.vehicleDetails[i]["city"][j]);
+          this._chauffeurDriveService.city = this._chauffeurDriveService.city.filter((el, i, a) => i === a.indexOf(el));
+        }
+      }
+    }
+    this.city = this._chauffeurDriveService.city;
+  }
+
   public formData = {};
+  public city = [];
   ngOnInit(): void {
+    this._chauffeurDriveService.getVehicleDetails("chauffeur-drive").subscribe((res) => {
+      this._chauffeurDriveService.vehicleDetails = res;
+      this.onchangeRadio();
+    })
+
     this.formData = this._chauffeurDriveService.getUserRequirements();
+    this.cityChange1(this.formData["city"]);
     if (this.formData["type"] === "AIRPORT & RAILWAY TRANSFERS") {
       this.selectedRadio = this.formData["type"];
       this.chauffeurAirportRailway.patchValue({

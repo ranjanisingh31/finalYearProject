@@ -22,4 +22,5 @@ export interface confirmBookingSelfDrive {
     luggage: number;
   };
   message: string;
+  total: Number;
 }

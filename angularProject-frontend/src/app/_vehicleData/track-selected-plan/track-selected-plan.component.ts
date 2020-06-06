@@ -116,11 +116,6 @@ export class TrackSelectedPlanComponent implements OnInit {
             else {
                 this.updateStatus("stopped");
                 clearInterval(this.interval);
-
-                // for (let i = 0; i < this.count; i++) {
-                //     console.log(this.count, i);
-                //     this.mark.remove();
-                // }
                 this._socketService.socket.emit("vehiclesLocationRemove", this.activeList);
             }
 
@@ -223,8 +218,6 @@ export class TrackSelectedPlanComponent implements OnInit {
                 },
             }]
         };
-        // var coordinates = data.features[0].geometry.coordinates;
-        // data.features[0].geometry.coordinates = [coordinates[0]];
         this.map.addSource('trace', { type: 'geojson', data: data });
         this.map.addLayer({
             "id": "line",
@@ -239,7 +232,7 @@ export class TrackSelectedPlanComponent implements OnInit {
             "filter": ["==", "modelId", 1],
         });
 
-        this.map.jumpTo({ 'center': [this.lng, this.lat], 'zoom': 20 });
+        this.map.jumpTo({ 'center': [this.lng, this.lat], 'zoom': 15 });
         this.map.setPitch(30);
 
         var currentMarkers = [];
@@ -258,7 +251,6 @@ export class TrackSelectedPlanComponent implements OnInit {
                 userId.push(res[i].userId);
                 iconColor.push(res[i].iconColor);
                 console.log("vl", res, res[i].location[res[i].location.length - 1].lng, res[i].location[res[i].location.length - 1].lat);
-                console.log(location, vName, userId, iconColor);
             }
 
             for (let i = 0; i < location.length; i++) {
@@ -277,7 +269,6 @@ export class TrackSelectedPlanComponent implements OnInit {
                 this.mark = new mapboxgl.Marker().setLngLat(location[i]).setPopup(new mapboxgl.Popup({ offset: 25 })
                     .setHTML('<h3 style="margin:0px;">' + "Vehicle Name: " + vName[i] + "<br/>" + "User Id: " + userId[i] + '</h3>' + '<p style="margin:0px;">' + "[" + location[i] + "]" + '</p>')).addTo(this.map);
                 currentMarkers.push(this.mark);
-                console.log("loc", location[i], data.features[0].geometry.coordinates);
 
             }
             if (currentMarkers !== null) {
@@ -298,13 +289,10 @@ export class TrackSelectedPlanComponent implements OnInit {
         //socketIo
         this._socketService.socket.on("response", (res) => {
             this._trackService.setUserAndTrackInfoAfterVerification(res, res.selectedPlan, res.addVehicle);
-            console.log("Plan exists...", "res", res);
             this.options = [];
             for (var i = 0; i < this._trackService.editVehicle.length; i++) {
                 this.options.push({ 'vName': this._trackService.editVehicle[i]["vehicleName"], 'state': this._trackService.editVehicle[i][this._trackService.editVehicle[i]["state"]], 'userId': this._trackService.editVehicle[i]["userId"], 'iconColor': this._trackService.editVehicle[i]["iconColor"] });
-                console.log("state", this._trackService.editVehicle[i][this._trackService.editVehicle[i]["state"]]);
             }
-            console.log("opt", this.options);
         });
 
         this._socketService.socket.on("result", (res) => {
@@ -327,22 +315,15 @@ export class TrackSelectedPlanComponent implements OnInit {
             this.initializeMap();
         }
 
-        // compass control
-        this.map.addControl(new CompassControl(), 'top-right');
-
-        // zoom control
-        this.map.addControl(new ZoomControl(), 'top-right');
-
-        // ruler control
-        this.map.addControl(new RulerControl(), 'top-right');
-        this.map.on('ruler.on', () => console.log('ruler: on'));
-        this.map.on('ruler.off', () => console.log('ruler: off'));
-
-
-
-        //traffic 
         this.map.on('load', () => {
-            this.map.addControl(new MapboxTraffic());
+            //traffic 
+            this.map.addControl(new MapboxTraffic(), 'bottom-right');
+            // ruler control
+            this.map.addControl(new RulerControl(), 'bottom-right');
+            // zoom control
+            this.map.addControl(new ZoomControl(), 'bottom-right');
+            // compass control
+            this.map.addControl(new CompassControl(), 'bottom-right');
         });
 
 

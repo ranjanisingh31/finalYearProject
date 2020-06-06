@@ -15,7 +15,7 @@ export class TrackVehicleBookingDialogComponent implements OnInit {
 
   start() {
     this.dialogRef.close();
-    this.router.navigate(["/track-selected-plan"]);
+    this.router.navigate(["/track-vehicle/track-selected-plan"]);
   }
   onClose() {
     this.dialogRef.close();

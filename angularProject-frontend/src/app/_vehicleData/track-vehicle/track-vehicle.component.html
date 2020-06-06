@@ -12,11 +12,11 @@
         TRACK
       </h1>
       <span style="color: white; font-size: 20px; font-weight: 300;">
-        Track vehicles using AWS.<br />
+        Track vehicles using Mapbox & SocketIO.<br />
         Tracking would be done using co-ordinates sent by the driver's web
         application.<br />
-        The location co-ordinates could be sent into mongoDB Atlas where the
-        latest location of driver can be updated.
+        The location co-ordinates is sent to the mongoDB Atlas where the
+        latest location of driver can be updated in real-time.
       </span>
     </div>
     <div class="row2">
@@ -102,14 +102,14 @@
                         ">
                         {{ plan.vehicle }}
                       </div>
-                      <div style="font-size: 18px; color: darkgray;">
+                      <div style="font-size: 18px; color:gray;">
                         {{ plan.type }}
                       </div>
                       <div style="
                           font-size: 23px;
                           color: white;
                           font-weight: 600;
-                          background: maroon;
+                          background:yellowgreen;
                           height: 40px;
                           padding-top: 10px;
                           margin: 20px -2px 5px -3px;
@@ -118,7 +118,7 @@
                       </div>
                       <div style="
                           font-size: 18px;
-                          color: darkgray;
+                          color: gray;
                           font-weight: 200;
                         ">
                         paid&nbsp;{{ plan.intervals }}
@@ -126,7 +126,7 @@
                     </mat-card-content>
                     <mat-card-actions>
 
-                      <mat-checkbox color="warn" formControlName="check" [checked]="plan.vehicle === data"
+                      <mat-checkbox color="accent" formControlName="check" [checked]="plan.vehicle === data"
                         (change)="checkUncheckAll(plan)" style="background-color: white;">
                       </mat-checkbox>
                     </mat-card-actions>

@@ -3,9 +3,9 @@ import { MatDialog } from "@angular/material/dialog";
 import { SelfDriveService } from "src/app/_services_guard_interceptor/self-drive.service";
 import { SelfDriveInfoDialogComponent } from "../self-drive-info-dialog/self-drive-info-dialog.component";
 import { FormBuilder, Validators } from "@angular/forms";
-import { vehicleDetails } from "src/app/_interfaces/vehicleDetails";
 import { SelfDriveConfirmDialogComponent } from "../self-drive-confirm-dialog/self-drive-confirm-dialog.component";
 import { SigninAuthService } from "src/app/_services_guard_interceptor/signin-auth.service";
+
 
 @Component({
   selector: "app-self-drive-details",
@@ -45,7 +45,7 @@ export class SelfDriveDetailsComponent implements OnInit {
     });
   }
   //booking details
-  public _detail: vehicleDetails;
+  public _detail;
   public toggle = false;
   bookingDetails(detail) {
     this._detail = detail;
@@ -53,7 +53,7 @@ export class SelfDriveDetailsComponent implements OnInit {
   }
   //form
   public personalDetailsForm = this.fb.group({
-    fullName: ["", Validators.required, Validators.pattern("^[a-zA-Z ]*$")],
+    fullName: ["", Validators.required],
     email: ["", [Validators.required, Validators.email]],
     mobile: [
       "",
@@ -81,6 +81,8 @@ export class SelfDriveDetailsComponent implements OnInit {
       this.hideNext = true;
       this.hidePrev = true;
     }
+    this.toggleVehicle = this._selfDriveService.toggle;
+    this.vehicledata();
   }
   onSubmit() {
     this._selfDriveService.setUserSubmitFormDetails(
@@ -95,10 +97,19 @@ export class SelfDriveDetailsComponent implements OnInit {
       },
     });
   }
+  public toggleVehicle = false;
+  vehicledata() {
+    this.vehicleDetails = [];
+    for (let i = 0; i < this._selfDriveService.vehicleDetails.length; i++) {
+      for (let j = 0; j < this._selfDriveService.selectedVehicle.length; j++) {
+        if (this._selfDriveService.vehicleDetails[i]["name"] === this._selfDriveService.selectedVehicle[j]) {
+          this.vehicleDetails.push(this._selfDriveService.vehicleDetails[i]);
+        }
+      }
+    }
+  }
   ngOnInit(): void {
-    this._selfDriveService.getVehicleDetails().subscribe((res) => {
-      this.vehicleDetails = res;
-    });
+    this.vehicledata();
     this.personalDetailsForm.patchValue({
       email: this._signinAuthService.getVerifiedEmail(),
     });

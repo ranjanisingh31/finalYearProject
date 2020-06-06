@@ -1,0 +1,82 @@
+<table>
+    <tr>
+        <td style="border-right: 1px solid lightgray;">
+            <div class="image">
+                <img src="{{vehicleData.data.img}}" alt="img" style="width:350px;" />
+            </div>
+        </td>
+        <td style="background-color: white;">
+    <tr>
+        <td>
+            <div class="content">
+                <ul type="none" style="line-height: 30px; text-align: left;">
+                    <li style="font-size: 23px; font-weight: 300;">
+                        {{ vehicleData['data'].name }}
+                    </li>
+                    <li style="
+                            font-size: 18px;
+                            color: gray;
+                            font-weight: 300;
+                          ">
+                        Basic Rental-<span style="color: red;">
+                            {{vehicleData['data'].price | currency: "INR" }}</span>
+                    </li>
+                </ul>
+            </div>
+        </td>
+    </tr>
+    <mat-divider></mat-divider>
+    <tr>
+        <td>
+            <ul type="none">
+                <li>
+                    <img class="info" src="./assets/img/auto.png" alt="img" />
+                </li>
+                <li class="title">Transmission</li>
+                <li>
+                    <span class="value">{{ vehicleData['data'].mode }}</span>
+                </li>
+            </ul>
+        </td>
+        <td style="border-left: 1px solid lightgray;">
+            <ul type="none">
+                <li>
+                    <img class="info" src="./assets/img/carDoor.png" alt="img" />
+                </li>
+                <li class="title">Doors</li>
+                <li>
+                    <span class="value">{{vehicleData['data'].door }}</span>
+                </li>
+            </ul>
+        </td>
+    </tr>
+    <tr>
+        <td style="border-top: 1px solid lightgray;">
+            <ul type="none">
+                <li>
+                    <img class="info" src="./assets/img/carSeat.png" alt="img" />
+                </li>
+                <li class="title">Seat Capacity</li>
+                <li>
+                    <span class="value">{{ vehicleData['data'].seat }}</span>
+                </li>
+            </ul>
+        </td>
+        <td style="
+                      border-top: 1px solid lightgray;
+                      border-left: 1px solid lightgray;
+                    ">
+            <ul type="none">
+                <li>
+                    <img class="info" src="./assets/img/luggage.png" alt="img" />
+                </li>
+                <li class="title">Luggage</li>
+                <li>
+                    <span class="value">{{ vehicleData['data'].luggage }}</span>
+                </li>
+            </ul>
+        </td>
+    </tr>
+    </td>
+    </tr>
+</table>

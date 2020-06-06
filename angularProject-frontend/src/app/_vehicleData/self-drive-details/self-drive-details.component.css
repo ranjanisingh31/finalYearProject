@@ -26,6 +26,7 @@ p {
 }
 .mat-display-1 {
   margin: 0px;
+  font-size: 23px;
 }
 #btn {
   background-color: #ce2127;
@@ -41,9 +42,9 @@ p {
 }
 
 .wrapper {
-  background-image: url("/assets/img/img32.jpg");
-  background-size: contain;
-  background-repeat: repeat;
+  background: url("/assets/img/img57.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
   height: 100%;
   overflow: auto;
 }
@@ -55,7 +56,7 @@ p {
   margin: 20px;
   border-radius: 10px;
   border-style: outset;
-  background: linear-gradient(white, white, moccasin);
+  background: linear-gradient(90deg,white,white,khaki,white,white);
 }
 
 .next,
@@ -85,7 +86,7 @@ p {
   height: 300px;
 }
 .panel {
-  margin: 50px 75px;
+  margin: 50px;
 }
 ::ng-deep.mat-expansion-panel-header {
   height: 100px;
@@ -99,17 +100,21 @@ mat-expansion-panel-header,
   font-weight: 400;
 }
 .mat-display-3 {
-  margin: 50px 75px;
+  word-spacing: 2px;
   font-weight: 500;
-  background: white;
-  padding: 0 30px;
-  border: 1.5px solid;
-  color: black;
-  font-size: 40px;
+  color:white;
+  text-align: center;
+  letter-spacing: 5px;
+  text-shadow: 5px 4px 0 black;
+  margin: 0px 0px 3px 0px;
 }
+
+
 .select {
   padding: 20px;
   height: 465px;
+  background: linear-gradient(5deg,black, transparent);
+  color: white;
 }
 .info {
   height: 55px;
@@ -151,4 +156,15 @@ mat-radio-button {
   margin: 0px 40px 10px;
   padding-left: 180px;
   border-style: outset;
+  background-color: white;
+}
+mat-expansion-panel{
+  background: linear-gradient(5deg, black, transparent);
+
+}
+mat-panel-title{
+  color:white;
+}
+::ng-deep.mat-expansion-indicator::after{
+  color:white;
 }

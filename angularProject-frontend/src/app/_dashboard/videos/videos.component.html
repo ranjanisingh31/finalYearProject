@@ -1,11 +1,7 @@
 <div class="wrap">
   <div>
     <mat-grid-list cols="7" rowHeight="200px">
-      <mat-grid-tile
-        *ngFor="let video of videos"
-        rowspan="{{ video.rows }}"
-        colspan="{{ video.cols }}"
-      >
+      <mat-grid-tile *ngFor="let video of videos" rowspan="{{ video.rows }}" colspan="{{ video.cols }}">
         <video id="myVideo" autoplay loop muted="false" preload="auto">
           <source src="{{ video.name }}" type="video/mp4" />
           <source src="{{ video.name }}" type="video/webm" />

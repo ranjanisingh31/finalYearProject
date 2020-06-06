@@ -1,11 +1,11 @@
 <div class="backG">
   <app-navbar></app-navbar>
   <div class="wrapper-1">
-    <span class="mat-display-3">CHAUFFEUR-DRIVE</span>
+    <div class="mat-display-3">CHAUFFEUR - DRIVE</div>
     <div class="details">
       <app-chauffeur-drive></app-chauffeur-drive>
     </div>
-    <div class="select">
+    <div class="select" *ngIf="toggleVehicle">
       <span>Select Vehicle</span>
       <div class="ions" *ngFor="let detail of vehicleDetails | slice: min:max">
         <div class="card-wrapper">
@@ -47,7 +47,7 @@
                   <img src="{{ _detail.img }}" alt="img" />
                 </div>
               </td>
-              <td>
+              <td style="background-color: white;">
             <tr>
               <td>
                 <div class="content">

@@ -2,15 +2,20 @@ import { Injectable } from "@angular/core";
 import { HttpClient } from "@angular/common/http";
 import { Observable } from "rxjs";
 import { confirmBookingChauffeurDrive } from "../_interfaces/confirmBookingChauffeurDrive";
+import { vehicleDetails } from '../_interfaces/vehicleDetails';
+
 
 @Injectable({
   providedIn: "root",
 })
 export class ChauffeurDriveService {
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient) { }
 
   private chauffeurDrive_url = "http://localhost:3000/api/chauffeur-drive";
-  private vehicleDetails_url = "http://localhost:3000/api/vehicleDetails_CD";
+  private getVehicleDetails_url = "http://localhost:3000/api/vehicleDetails";
+  private chauffeurDriveDetails_url = "http://localhost:3000/api/chauffeurDriveDetails";
+
+
   public chauffeurDriveForm = {};
   setUserRequirements(data, data1) {
     this.chauffeurDriveForm = data;
@@ -19,16 +24,27 @@ export class ChauffeurDriveService {
   setFormDetails(data, data1) {
     this.chauffeurDriveForm["clientDetails"] = data;
     this.chauffeurDriveForm["selectedVehicleDetails"] = data1;
-
-    console.log("data", this.chauffeurDriveForm);
   }
   getUserRequirements() {
     return this.chauffeurDriveForm;
   }
-  confirmBooking(): Observable<confirmBookingChauffeurDrive> {
+  confirmBooking(total): Observable<confirmBookingChauffeurDrive> {
+    var data = this.chauffeurDriveForm;
+    data["total"] = total;
     return this.http.post<confirmBookingChauffeurDrive>(
       this.chauffeurDrive_url,
-      this.chauffeurDriveForm
-    );
+      data);
   }
+  getVehicleDetails(data): Observable<vehicleDetails[]> {
+    return this.http.post<vehicleDetails[]>(this.getVehicleDetails_url, { useCase: data });
+  }
+
+  getChauffeurDriveDetails(): Observable<confirmBookingChauffeurDrive[]> {
+    return this.http.get<confirmBookingChauffeurDrive[]>(this.chauffeurDriveDetails_url);
+  }
+
+  public vehicleDetails = [{}];
+  public city = [];
+  public selectedVehicle = [];
+  public toggle = false;
 }

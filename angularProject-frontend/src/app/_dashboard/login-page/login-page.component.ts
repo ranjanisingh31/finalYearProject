@@ -3,6 +3,7 @@ import { FormBuilder, Validators } from "@angular/forms";
 import { MatDialog, MAT_DIALOG_DATA } from "@angular/material/dialog";
 import { SigninAuthService } from "src/app/_services_guard_interceptor/signin-auth.service";
 import { HttpErrorResponse } from "@angular/common/http";
+import { Router } from '@angular/router';
 
 @Component({
   selector: "app-login-page",
@@ -14,6 +15,7 @@ export class LoginPageComponent implements OnInit {
     private fb: FormBuilder,
     private _signinService: SigninAuthService,
     public dialog: MatDialog,
+    private router: Router,
     @Inject(MAT_DIALOG_DATA) public data: any
   ) { }
   public hide = true;
@@ -55,24 +57,29 @@ export class LoginPageComponent implements OnInit {
     password: ["", [Validators.required]],
   });
 
-  onSubmitLogin() {
-    this._signinService.loginUser(this.loginForm.value).subscribe(
-      (res) => {
-        localStorage.setItem("token", res.token);
-        localStorage.setItem("email", res.email);
-        alert(res.message);
-      },
-      (err) => {
-        if (err instanceof HttpErrorResponse) {
-          if (err.status === 401) {
-            alert(err.error.message + " Enter registered Email.");
-          } else {
-            alert(err.statusText + " Try Again!!!");
+  onSubmitLogin(email, pass) {
+    if (email === "admin@gmail.com" && pass === "123") {
+      this.router.navigate(["/admin"]);
+    }
+    else {
+      this._signinService.loginUser(this.loginForm.value).subscribe(
+        (res) => {
+          localStorage.setItem("token", res.token);
+          localStorage.setItem("email", res.email);
+          alert(res.message);
+        },
+        (err) => {
+          if (err instanceof HttpErrorResponse) {
+            if (err.status === 401) {
+              alert(err.error.message + " Enter registered Email.");
+            } else {
+              alert(err.statusText + " Try Again!!!");
+            }
           }
+          this.openLogin();
         }
-        this.openLogin();
-      }
-    );
+      );
+    }
   }
   //registration
   registerationForm = this.fb.group({

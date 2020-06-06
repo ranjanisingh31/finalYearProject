@@ -65,7 +65,6 @@ export class TrackVehicleComponent implements OnInit {
     calculateGstValue() {
         this.gstValue = (this.data1["price"] * Number(this.gst)) / 100;
         this.grandT = (this.data1["price"] + this.gstValue).toFixed(2);
-        console.log("gst", this.gstValue, this.grandT)
     }
 
     public data;
@@ -81,8 +80,7 @@ export class TrackVehicleComponent implements OnInit {
                 window.location.hash = "stepper";
             } else {
                 this._trackServices.setUserAndTrackInfoAfterVerification(res, res.selectedPlan, res.addVehicle);
-                console.log("Plan exists...", "res", res);
-                this.router.navigate(["/track-selected-plan"]);
+                this.router.navigate(["/track-vehicle/track-selected-plan"]);
             }
         }, (err) => {
             if (err instanceof HttpErrorResponse) {
@@ -97,7 +95,7 @@ export class TrackVehicleComponent implements OnInit {
     }
     confirm() {
         this.count = true;
-        this._trackServices.confirmTrackingDetails().subscribe((res) => {
+        this._trackServices.confirmTrackingDetails(this.grandT).subscribe((res) => {
             console.log(res.message);
             this.dialog.open(TrackVehicleBookingDialogComponent, {
                 width: "450px",

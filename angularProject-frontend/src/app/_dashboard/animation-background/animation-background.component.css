@@ -9,10 +9,27 @@
 #sky {
   overflow: hidden;
   position: static;
-  background: linear-gradient(#6ec6e9, pink, white);
-  height: 1500px;
+  background: linear-gradient(#6ec6e9, pink,white,palegoldenrod,lightgreen);
+  height: 1029px;
 }
-
+.grass{
+  position: static;
+  background-image: url("/assets/img/grass.png");
+  background-repeat: no-repeat;
+      width: 220px;
+    height: 215px;
+    margin-top: -167px;
+    margin-left: 604px;
+}
+.stone{
+  position: static;
+  background-image: url("/assets/img/stone2.png");
+  background-repeat: no-repeat;
+  width: 435px;
+    height: 215px;
+    margin-top: -150px;
+    margin-left: 791px;
+}
 .cloud {
   position: static;
   background-image: url("/assets/img/cloud.png");
@@ -113,13 +130,14 @@
 }
 
 #truck1 {
-  background-image: url("/assets/img/truck4.png");
+  background-image: url("/assets/img/truck9.png");
   position: static;
   background-repeat: no-repeat;
   width: 323px;
   height: 156px;
   display: block;
-  animation: movingtrucks 5s linear infinite;
+  animation: movingtrucks 7s linear infinite;
+  margin-top: -164px;
 }
 @keyframes movingtrucks {
   0% {
@@ -137,6 +155,7 @@
   height: 194px;
   display: block;
   animation: movingtrucks2 10s linear infinite;
+  margin-top: -112px;
 }
 @keyframes movingtrucks2 {
   0% {
@@ -148,8 +167,16 @@
 }
 #road1 {
   width: 100%;
-  height: 800px;
+  height: 355px;
   background-image: url("/assets/img/rock1.webp");
   position: static;
   background-repeat: no-repeat;
+}
+
+.road2{
+  background-color:gray;
+  height:10px;
+  width:100%;
+  z-index: 2;
+  position:absolute;
 }

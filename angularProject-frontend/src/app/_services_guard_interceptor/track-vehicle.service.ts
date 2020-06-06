@@ -14,6 +14,7 @@ export class TrackVehicleService {
     private _addVehicle = "http://localhost:3000/api/addVehicle";
     private _removeVehicle = "http://localhost:3000/api/removeVehicle";
     private _selectedPlan = "http://localhost:3000/api/selectedTrackPlan";
+    private _getUserTrackDataUrl = "http://localhost:3000/api/userTrackDetails";
 
 
     public trackDetails = {};
@@ -21,8 +22,10 @@ export class TrackVehicleService {
         this.trackDetails = data;
         this.trackDetails["selectedPlan"] = data1;
     }
-    confirmTrackingDetails(): Observable<trackDetails> {
-        return this.http.post<trackDetails>(this._trackUrl, this.trackDetails);
+    confirmTrackingDetails(total): Observable<trackDetails> {
+        var data = this.trackDetails;
+        data["total"] = total;
+        return this.http.post<trackDetails>(this._trackUrl, data);
     }
     getTrackPlan(): Observable<trackPlan> {
         return this.http.get<trackPlan>(this._planUrl);
@@ -41,7 +44,6 @@ export class TrackVehicleService {
         var value = {};
         value = data;
         value["searchId"] = id;
-        console.log("value", value);
         return this.http.post<editVehicle>(this._addVehicle, value);
     }
     removeVehicle_Edit(data, id): Observable<editVehicle> {
@@ -53,5 +55,7 @@ export class TrackVehicleService {
     getSelectedPlan(email): Observable<trackDetails> {
         return this.http.post<trackDetails>(this._selectedPlan, { email: email });
     }
-
+    getUserTrackData(): Observable<trackDetails[]> {
+        return this.http.get<trackDetails[]>(this._getUserTrackDataUrl);
+    }
 }

@@ -15,7 +15,7 @@ export class ChauffeurDriveConfirmDialogComponent implements OnInit {
     public dialogRef: MatDialogRef<ChauffeurDriveConfirmDialogComponent>,
     private _chauffeurDriveService: ChauffeurDriveService,
     private router: Router
-  ) {}
+  ) { }
   public type = this.data.details.type;
   public gst = 12;
   public start = this.data.details.startDate.toString().split(" ", 4);
@@ -24,23 +24,24 @@ export class ChauffeurDriveConfirmDialogComponent implements OnInit {
     this.type === "AIRPORT & RAILWAY TRANSFERS"
       ? null
       : this.data.details.endDate.toString().split(" ", 4);
+
   public duration =
     this.type === "AIRPORT & RAILWAY TRANSFERS"
       ? null
       : (this.end[2] - this.start[2]) * 24;
+
   public taxes = (this.data.details.selectedVehicleDetails.price * 12) / 100;
-  public total: number =
-    parseInt(this.data.details.selectedVehicleDetails.price) + this.taxes;
+  public total: number = this.type === "AIRPORT & RAILWAY TRANSFERS" ? parseInt(this.data.details.selectedVehicleDetails.price) + this.taxes : parseInt(this.data.details.selectedVehicleDetails.price) * this.duration / 24 + this.taxes;
 
   onClose() {
     this.dialogRef.close();
   }
   confirm() {
-    this._chauffeurDriveService.confirmBooking().subscribe(
+    this._chauffeurDriveService.confirmBooking(this.total).subscribe(
       (res) => {
         alert(res.message);
         this.dialogRef.close();
-        this.router.navigate(["/ThankYou-Page"]);
+        this.router.navigate(["/"]);
       },
       (err) => {
         if (err instanceof HttpErrorResponse) {
@@ -50,5 +51,5 @@ export class ChauffeurDriveConfirmDialogComponent implements OnInit {
     );
   }
 
-  ngOnInit(): void {}
+  ngOnInit(): void { }
 }

@@ -60,8 +60,7 @@ mat-card {
   height: 195px;
   text-align: center;
   padding: 15px 0px 5px 0px;
-  border-style: groove;
-  background: linear-gradient(45deg, darkgoldenrod, white, white);
+  background:linear-gradient(45deg, lightgray,white,white);
 }
 ::ng-deep.mat-grid-tile {
   height: 270px !important;

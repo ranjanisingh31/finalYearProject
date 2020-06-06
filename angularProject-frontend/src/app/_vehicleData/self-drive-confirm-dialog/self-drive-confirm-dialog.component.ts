@@ -15,7 +15,7 @@ export class SelfDriveConfirmDialogComponent implements OnInit {
     public dialogRef: MatDialogRef<SelfDriveConfirmDialogComponent>,
     private _selfDriveService: SelfDriveService,
     private router: Router
-  ) {}
+  ) { }
 
   public gst = 12;
   public startDate = this.data.details.startDate.toString().split(" ", 4);
@@ -23,17 +23,17 @@ export class SelfDriveConfirmDialogComponent implements OnInit {
   public duration = (this.endDate[2] - this.startDate[2]) * 24;
   public taxes = (this.data.details.selectedVehicleDetails.price * 12) / 100;
   public total: number =
-    parseInt(this.data.details.selectedVehicleDetails.price) + this.taxes;
+    parseInt(this.data.details.selectedVehicleDetails.price) * this.duration / 24 + this.taxes;
 
   onClose() {
     this.dialogRef.close();
   }
   confirm() {
-    this._selfDriveService.confirmBooking().subscribe(
+    this._selfDriveService.confirmBooking(this.total).subscribe(
       (res) => {
         alert(res.message);
         this.dialogRef.close();
-        this.router.navigate(["/ThankYou-Page"]);
+        this.router.navigate(["/"]);
       },
       (err) => {
         if (err instanceof HttpErrorResponse) {
@@ -42,5 +42,5 @@ export class SelfDriveConfirmDialogComponent implements OnInit {
       }
     );
   }
-  ngOnInit(): void {}
+  ngOnInit(): void { }
 }

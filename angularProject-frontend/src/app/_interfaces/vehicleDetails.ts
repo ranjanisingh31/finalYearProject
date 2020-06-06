@@ -6,4 +6,7 @@ export interface vehicleDetails {
   door: Number;
   seat: Number;
   luggage: number;
+  city: [string];
+  message: string;
+  useCase: string;
 }

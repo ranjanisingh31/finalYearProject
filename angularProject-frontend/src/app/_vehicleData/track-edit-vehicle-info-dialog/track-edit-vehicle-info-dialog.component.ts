@@ -109,7 +109,6 @@ export class TrackEditVehicleInfoDialogComponent implements OnInit {
 
 
         var _date = _month[2].split('');
-        console.log(_month, _date);
         this.vehicleDataForm.patchValue({
             expirationDate: `${
                 _date[0]

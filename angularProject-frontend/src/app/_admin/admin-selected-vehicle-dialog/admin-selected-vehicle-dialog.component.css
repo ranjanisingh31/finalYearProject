@@ -1,0 +1,21 @@
+.info {
+  height: 35px;
+  width: 35px;
+}
+
+.title {
+  font-size: 18px;
+  width: 200px;
+  font-weight: 400px;
+}
+.value {
+  font-size: 15px;
+  color: gray;
+}
+ul {
+  margin: 0px;
+  padding: 14px;
+}
+table {
+  text-align: center;
+}

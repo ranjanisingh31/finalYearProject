@@ -1,0 +1,91 @@
+.wrapper{
+    background-image: url("/assets/img/line2.jpg");
+    width: 100%;
+    height:100%;
+    overflow: auto;
+}
+.mat-display-3{
+    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  font-weight: 600;
+  letter-spacing: 5px;
+  width: 440px;
+  color: white;
+  -webkit-text-stroke: 1px #070707;
+  text-shadow: 0px 4px 4px #0c0c0c;
+  position: fixed;
+  font-size: 70px;
+  padding: 20px; 
+  text-decoration: none;
+  position:fixed;   
+  margin:0px;
+}
+.mat-display-3:hover{
+    background-color:rgba(255, 255, 255, 0.3);
+}
+.admin{
+margin-top: 120px;
+text-align: center;
+background-color:rgba(255, 255, 255, 0.7);
+}
+
+h1{
+        font-weight: 600;
+    font-size: 35px;
+    text-shadow: 2px 3px 1px grey;
+    letter-spacing: 10px;
+    word-spacing: 10px;
+}
+.tabs{
+    background-color: white;
+    margin:50px;
+}
+.tab{
+    margin:20px;
+    border:1px solid black;
+}
+.field{
+    width:250px;
+    margin:10px;
+    margin-left:70px;
+    font-size: 15px;
+}
+.addVehicle{
+    margin:20px;
+    padding-left: 135px;
+
+}
+
+table {
+  width: 100%;
+  
+}
+th{
+    font-weight: 600;
+    font-size: 16px;
+    color: black;
+    text-shadow: 3px 3px 3px lightgrey;
+    letter-spacing: 1px;
+    
+}
+td.mat-cell{
+    font-weight: 500;
+    color: darkslategray;
+    background-color:lightyellow;
+}
+td.mat-cell,th.mat-header-cell{
+    padding:10px 15px;
+}
+button{
+    background-color: salmon;
+    color: white;
+}
+button:hover{
+    background-color:lightsalmon;
+}
+ul{
+    margin:0px;
+    padding:0px;
+}
+.title{
+    font-weight: bold;
+}

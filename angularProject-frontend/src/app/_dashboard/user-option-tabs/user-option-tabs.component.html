@@ -9,23 +9,6 @@
           <mat-tab label="Chauffeur Drive">
             <app-chauffeur-drive></app-chauffeur-drive>
           </mat-tab>
-          <mat-tab label="Lease A Vehicle?">
-            <div>
-              <ul>
-                <li>
-                  <mat-icon>directions_car</mat-icon>
-                  Vehicle leasing is the leasing (or the use) of a motor vehicle
-                  for a fixed period of time at an agreed amount of money for
-                  the lease.
-                </li>
-                <li>
-                  <mat-icon>monetization_on</mat-icon> Lease your vehicle with
-                  zero down payment
-                </li>
-                <li></li>
-              </ul>
-            </div>
-          </mat-tab>
           <mat-tab label="Track Your Vehicle?">
             <table>
               <tbody>
@@ -34,7 +17,7 @@
                     <div class="track">
                       <ul type="none">
                         <li>
-                          <mat-icon>desktop_mac</mat-icon>
+                          <mat-icon class="mIcon">desktop_mac</mat-icon>
                         </li>
                         <li><span class="title">1-Page Dashboard</span></li>
                         <li>
@@ -43,11 +26,11 @@
                       </ul>
                     </div>
                   </td>
-                  <td>
+                  <td style="padding-bottom: 20px;">
                     <div class="track">
                       <ul type="none">
                         <li>
-                          <mat-icon>important_devices</mat-icon>
+                          <mat-icon class="mIcon">important_devices</mat-icon>
                         </li>
                         <li><span class="title">Dedicated Server</span></li>
                         <li>
@@ -60,7 +43,7 @@
                     <div class="track">
                       <ul type="none">
                         <li>
-                          <mat-icon>layers</mat-icon>
+                          <mat-icon class="mIcon">layers</mat-icon>
                         </li>
                         <li><span class="title">API Integration</span></li>
                         <li>
@@ -68,13 +51,21 @@
                         </li>
                       </ul>
                     </div>
-                  </td>
                   <td>
-                    <button
-                      mat-stroked-button
-                      style="margin: 0px 40px;"
-                      (click)="onClick()"
-                    >
+                    <div class="track">
+                      <ul type="none">
+                        <li>
+                          <mat-icon class="mIcon">sync</mat-icon>
+                        </li>
+                        <li><span class="title">Synchronized</span></li>
+                        <li>
+                          <p>Vehicles to be tracked will be in sync and visible to all the users.</p>
+                        </li>
+                      </ul>
+                    </div>
+                  </td>
+                  <td style="width:0px;">
+                    <button mat-stroked-button style="margin: 0px 40px;" (click)="onClick()">
                       Proceed
                     </button>
                   </td>

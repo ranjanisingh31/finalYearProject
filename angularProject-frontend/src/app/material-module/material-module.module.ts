@@ -23,6 +23,7 @@ import { MatTreeModule } from '@angular/material/tree';
 import { MatAutocompleteModule } from "@angular/material/autocomplete";
 import { MatListModule } from "@angular/material/list";
 import { MatRippleModule } from "@angular/material/core";
+import { MatTableModule } from "@angular/material/table";
 
 const material = [
   MatButtonModule,
@@ -47,7 +48,8 @@ const material = [
   MatTreeModule,
   MatAutocompleteModule,
   MatListModule,
-  MatRippleModule
+  MatRippleModule,
+  MatTableModule
 ];
 
 @NgModule({

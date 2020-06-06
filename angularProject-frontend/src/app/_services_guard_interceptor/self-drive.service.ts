@@ -8,9 +8,11 @@ import { confirmBookingSelfDrive } from "../_interfaces/confirmBookingSelfDrive"
   providedIn: "root",
 })
 export class SelfDriveService {
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient) { }
   private selfDrive_url = "http://localhost:3000/api/self-drive";
-  private vehicleDetails_url = "http://localhost:3000/api/vehicleDetails";
+  private getVehicleDetails_url = "http://localhost:3000/api/vehicleDetails";
+  private selfDriveDetails_url = "http://localhost:3000/api/selfDriveDetails";
+  private selectedVehicle_url = "http://localhost:3000/api/selectedVehicleData";
 
   public selfDriveForm = {};
   setUserRequirements(data) {
@@ -24,14 +26,29 @@ export class SelfDriveService {
     return this.selfDriveForm;
   }
 
-  getVehicleDetails(): Observable<vehicleDetails[]> {
-    return this.http.get<vehicleDetails[]>(this.vehicleDetails_url);
+  getVehicleDetails(data): Observable<vehicleDetails[]> {
+    return this.http.post<vehicleDetails[]>(this.getVehicleDetails_url, { useCase: data });
   }
 
-  confirmBooking(): Observable<confirmBookingSelfDrive> {
+  confirmBooking(total): Observable<confirmBookingSelfDrive> {
+    var data = this.selfDriveForm;
+    data["total"] = total;
     return this.http.post<confirmBookingSelfDrive>(
       this.selfDrive_url,
-      this.selfDriveForm
+      data
     );
   }
+
+  getSelfDriveDetails(): Observable<confirmBookingSelfDrive[]> {
+    return this.http.get<confirmBookingSelfDrive[]>(this.selfDriveDetails_url);
+  }
+
+  getSelectedVehicleDetails(id): Observable<vehicleDetails> {
+    return this.http.post<vehicleDetails>(this.selectedVehicle_url, { id: id });
+  }
+
+  public vehicleDetails = [{}];
+  public city = [];
+  public selectedVehicle = [];
+  public toggle = false;
 }

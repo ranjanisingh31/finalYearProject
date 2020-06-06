@@ -12,7 +12,6 @@ import { UserOptionTabsComponent } from "./_dashboard/user-option-tabs/user-opti
 import { VideosComponent } from "./_dashboard/videos/videos.component";
 import { ReactiveFormsModule, FormsModule } from "@angular/forms";
 import { ChauffeurDriveComponent } from "./_vehicleData/chauffeur-drive/chauffeur-drive.component";
-import { LeaseVehicleComponent } from "./_vehicleData/lease-vehicle/lease-vehicle.component";
 import { SelfDriveComponent } from "./_vehicleData/self-drive/self-drive.component";
 import { SelfDriveDetailsComponent } from "./_vehicleData/self-drive-details/self-drive-details.component";
 import { SelfDriveInfoDialogComponent } from "./_vehicleData/self-drive-info-dialog/self-drive-info-dialog.component";
@@ -24,10 +23,11 @@ import { ChauffeurDriveDetailsComponent } from './_vehicleData/chauffeur-drive-d
 import { SelfDriveConfirmDialogComponent } from './_vehicleData/self-drive-confirm-dialog/self-drive-confirm-dialog.component';
 import { ChauffeurDriveConfirmDialogComponent } from './_vehicleData/chauffeur-drive-confirm-dialog/chauffeur-drive-confirm-dialog.component';
 import { ChauffeurDriveInfoDialogComponent } from './_vehicleData/chauffeur-drive-info-dialog/chauffeur-drive-info-dialog.component';
-import { ThankYouPageComponent } from './_dashboard/thank-you-page/thank-you-page.component';
 import { TrackVehicleBookingDialogComponent } from './_vehicleData/track-vehicle-booking-dialog/track-vehicle-booking-dialog.component';
 import { TrackSelectedPlanComponent } from './_vehicleData/track-selected-plan/track-selected-plan.component';
 import { TrackEditVehicleInfoDialogComponent } from './_vehicleData/track-edit-vehicle-info-dialog/track-edit-vehicle-info-dialog.component';
+import { AdminComponent } from './_admin/admin/admin.component';
+import { AdminSelectedVehicleDialogComponent } from './_admin/admin-selected-vehicle-dialog/admin-selected-vehicle-dialog.component';
 
 @NgModule({
   declarations: [
@@ -38,7 +38,6 @@ import { TrackEditVehicleInfoDialogComponent } from './_vehicleData/track-edit-v
     UserOptionTabsComponent,
     VideosComponent,
     ChauffeurDriveComponent,
-    LeaseVehicleComponent,
     SelfDriveComponent,
     SelfDriveDetailsComponent,
     SelfDriveInfoDialogComponent,
@@ -47,10 +46,11 @@ import { TrackEditVehicleInfoDialogComponent } from './_vehicleData/track-edit-v
     SelfDriveConfirmDialogComponent,
     ChauffeurDriveConfirmDialogComponent,
     ChauffeurDriveInfoDialogComponent,
-    ThankYouPageComponent,
     TrackVehicleBookingDialogComponent,
     TrackSelectedPlanComponent,
     TrackEditVehicleInfoDialogComponent,
+    AdminComponent,
+    AdminSelectedVehicleDialogComponent,
   ],
   imports: [
     BrowserModule,

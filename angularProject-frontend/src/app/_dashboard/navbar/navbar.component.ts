@@ -1,5 +1,4 @@
 import { Component, OnInit } from "@angular/core";
-import { ScrollDispatcher } from "@angular/cdk/scrolling";
 import { MatDialog } from "@angular/material/dialog";
 import { SigninAuthService } from "src/app/_services_guard_interceptor/signin-auth.service";
 import { LoginPageComponent } from "src/app/_dashboard/login-page/login-page.component";
@@ -11,10 +10,9 @@ import { LoginPageComponent } from "src/app/_dashboard/login-page/login-page.com
 })
 export class NavbarComponent implements OnInit {
   constructor(
-    private scrollDispatcher: ScrollDispatcher,
     public dialog: MatDialog,
-    private _signinService: SigninAuthService
-  ) {}
+    private _signinService: SigninAuthService,
+  ) { }
   openLoginDialog() {
     this.dialog.open(LoginPageComponent, {
       width: "450px",
@@ -34,5 +32,5 @@ export class NavbarComponent implements OnInit {
     this._signinService.loggedOut();
     alert("LoggedOut Successfully!!!");
   }
-  ngOnInit(): void {}
+  ngOnInit(): void { }
 }

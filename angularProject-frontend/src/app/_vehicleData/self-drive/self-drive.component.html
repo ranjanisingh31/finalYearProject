@@ -2,44 +2,30 @@
   <form [formGroup]="selfDriveForm" (ngSubmit)="onSubmit()">
     <mat-form-field appearance="outline">
       <mat-label>Origin City</mat-label>
-      <mat-select formControlName="city">
+      <mat-select formControlName="city" (selectionChange)="cityChange($event)">
         <mat-option>--None-- </mat-option>
-        <mat-option value="city">city</mat-option>
+        <mat-option *ngFor="let city of city" value="{{city}}">{{city}}</mat-option>
       </mat-select>
     </mat-form-field>
 
     <mat-form-field appearance="outline">
       <mat-label>Delivery Address</mat-label>
       <input matInput type="text" formControlName="deliveryAddress" />
-      <mat-icon matSuffix>place</mat-icon>
+      <mat-icon matSuffix class="iconM">place</mat-icon>
     </mat-form-field>
 
     <mat-form-field appearance="outline">
       <mat-label>Start Date</mat-label>
-      <input
-        matInput
-        [min]="minDate"
-        [max]="maxDate"
-        [matDatepicker]="picker"
-        (dateInput)="setEndDate('input', $event)"
-        (dateChange)="setEndDate('change', $event)"
-        placeholder="MM/DD/YYYY"
-        formControlName="startDate"
-      />
+      <input matInput [min]="minDate" [max]="maxDate" [matDatepicker]="picker" (dateInput)="setEndDate('input', $event)"
+        (dateChange)="setEndDate('change', $event)" placeholder="MM/DD/YYYY" formControlName="startDate" />
       <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
       <mat-datepicker #picker></mat-datepicker>
     </mat-form-field>
 
     <mat-form-field appearance="outline">
       <mat-label>End Date</mat-label>
-      <input
-        matInput
-        [min]="minDate1"
-        [max]="maxDate1"
-        [matDatepicker]="picker1"
-        placeholder="MM/DD/YYYY"
-        formControlName="endDate"
-      />
+      <input matInput [min]="minDate1" [max]="maxDate1" [matDatepicker]="picker1" placeholder="MM/DD/YYYY"
+        formControlName="endDate" />
       <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
       <mat-datepicker #picker1></mat-datepicker>
     </mat-form-field>
@@ -48,7 +34,7 @@
       <mat-label>Select vehicle</mat-label>
       <mat-select formControlName="vehicle">
         <mat-option>--None--</mat-option>
-        <mat-option value="car">car</mat-option>
+        <mat-option *ngFor="let name of vehicles" value="{{name}}">{{name}}</mat-option>
       </mat-select>
     </mat-form-field>
     <button mat-stroked-button [disabled]="!selfDriveForm.valid">SEARCH</button>

@@ -4,8 +4,9 @@
 }
 
 mat-form-field {
-  margin-right: 20px;
+  margin-right: 15px;
   margin-top: 20px;
+  width:192px;
 }
 .iconM{
   font-size: 30px;

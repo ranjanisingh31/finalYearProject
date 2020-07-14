@@ -9,10 +9,9 @@ import { confirmBookingSelfDrive } from "../_interfaces/confirmBookingSelfDrive"
 })
 export class SelfDriveService {
   constructor(private http: HttpClient) { }
-  private selfDrive_url = "http://localhost:3000/api/self-drive";
-  private getVehicleDetails_url = "http://localhost:3000/api/vehicleDetails";
-  private selfDriveDetails_url = "http://localhost:3000/api/selfDriveDetails";
-  private selectedVehicle_url = "http://localhost:3000/api/selectedVehicleData";
+  private base_url = "https://happyway-backend.herokuapp.com/api/";
+  private selfDrive_url = "http://localhost:3000/api/";
+
 
   public selfDriveForm = {};
   setUserRequirements(data) {
@@ -27,24 +26,24 @@ export class SelfDriveService {
   }
 
   getVehicleDetails(data): Observable<vehicleDetails[]> {
-    return this.http.post<vehicleDetails[]>(this.getVehicleDetails_url, { useCase: data });
+    return this.http.post<vehicleDetails[]>(this.base_url + "vehicleDetails", { useCase: data });
   }
 
   confirmBooking(total): Observable<confirmBookingSelfDrive> {
     var data = this.selfDriveForm;
     data["total"] = total;
     return this.http.post<confirmBookingSelfDrive>(
-      this.selfDrive_url,
+      this.base_url + "self-drive",
       data
     );
   }
 
   getSelfDriveDetails(): Observable<confirmBookingSelfDrive[]> {
-    return this.http.get<confirmBookingSelfDrive[]>(this.selfDriveDetails_url);
+    return this.http.get<confirmBookingSelfDrive[]>(this.base_url + "selfDriveDetails");
   }
 
   getSelectedVehicleDetails(id): Observable<vehicleDetails> {
-    return this.http.post<vehicleDetails>(this.selectedVehicle_url, { id: id });
+    return this.http.post<vehicleDetails>(this.base_url + "selectedVehicleData", { id: id });
   }
 
   public vehicleDetails = [{}];

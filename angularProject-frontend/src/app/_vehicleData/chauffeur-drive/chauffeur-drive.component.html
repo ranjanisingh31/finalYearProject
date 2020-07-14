@@ -96,7 +96,7 @@
   <div class="cd1">
     <div *ngIf="selectedRadio === 'OUTSTATION'; then thenBlock2"></div>
     <ng-template #thenBlock2>
-      <form [formGroup]="chauffeurOutstation">
+      <form [formGroup]="chauffeurOutstation" style="margin-left: 35px;">
         <mat-form-field appearance="outline" class="ff">
           <mat-label>Origin City</mat-label>
           <mat-select formControlName="city" (selectionChange)="cityChange($event)">
@@ -133,7 +133,7 @@
           <mat-datepicker-toggle matSuffix [for]="picker4"></mat-datepicker-toggle>
           <mat-datepicker #picker4></mat-datepicker>
         </mat-form-field>
-        <button class="btn" mat-stroked-button [disabled]="!chauffeurOutstation.valid" (click)="onSubmitO()">
+        <button mat-stroked-button [disabled]="!chauffeurOutstation.valid" (click)="onSubmitO()">
           SEARCH
         </button>
       </form>

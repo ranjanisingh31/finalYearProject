@@ -26,6 +26,7 @@ export class SelfDriveConfirmDialogComponent implements OnInit {
     parseInt(this.data.details.selectedVehicleDetails.price) * this.duration / 24 + this.taxes;
 
   onClose() {
+
     this.dialogRef.close();
   }
   confirm() {

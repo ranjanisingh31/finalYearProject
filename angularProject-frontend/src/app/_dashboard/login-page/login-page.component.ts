@@ -22,7 +22,7 @@ export class LoginPageComponent implements OnInit {
 
   openResetPass() {
     this.dialog.open(LoginPageComponent, {
-      width: "450px",
+      width: "400px",
       data: {
         login: false,
         reset: true,
@@ -32,7 +32,7 @@ export class LoginPageComponent implements OnInit {
   }
   openRegister() {
     this.dialog.open(LoginPageComponent, {
-      width: "450px",
+      width: "400px",
       data: {
         login: false,
         reset: false,
@@ -42,7 +42,7 @@ export class LoginPageComponent implements OnInit {
   }
   openLogin() {
     this.dialog.open(LoginPageComponent, {
-      width: "450px",
+      width: "400px",
       data: {
         login: true,
         reset: false,

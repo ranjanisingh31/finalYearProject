@@ -7,11 +7,11 @@
           color: white;
           font-weight: 500;
           text-shadow: 4px 4px 4px #0c0c0c;
-          font-size: 30px;
+          font-size: 25px;
         ">
         TRACK
       </h1>
-      <span style="color: white; font-size: 20px; font-weight: 300;">
+      <span style="color: white; font-size: 16px; font-weight: 300;">
         Track vehicles using Mapbox & SocketIO.<br />
         Tracking would be done using co-ordinates sent by the driver's web
         application.<br />
@@ -20,7 +20,7 @@
       </span>
     </div>
     <div class="row2">
-      <h1 style="font-size: 40px; padding: 40px 0px 5px 0px;">INDUSTRIES</h1>
+      <h1 style="font-size: 30px; padding: 40px 0px 5px 0px;">INDUSTRIES</h1>
       <table>
         <tbody>
           <tr>
@@ -96,28 +96,28 @@
                   <mat-card>
                     <mat-card-content style="font-family: serif;">
                       <div style="
-                          font-size: 22px;
+                          font-size: 18px;
                           margin-bottom: 5px;
                           font-weight: 600;
                         ">
                         {{ plan.vehicle }}
                       </div>
-                      <div style="font-size: 18px; color:gray;">
+                      <div style="font-size: 15px; color:gray;">
                         {{ plan.type }}
                       </div>
                       <div style="
-                          font-size: 23px;
+                          font-size: 20px;
                           color: white;
                           font-weight: 600;
                           background:yellowgreen;
-                          height: 40px;
+                          height: 30px;
                           padding-top: 10px;
                           margin: 20px -2px 5px -3px;
                         ">
                         {{ plan.price | currency: "INR" }}/monthly
                       </div>
                       <div style="
-                          font-size: 18px;
+                          font-size: 15px;
                           color: gray;
                           font-weight: 200;
                         ">
@@ -135,7 +135,7 @@
               </mat-grid-list>
               <div>
 
-                <button mat-stroked-button matStepperNext type="button" style="margin: -35px 1226px 15px;"
+                <button mat-stroked-button matStepperNext type="button" style="margin: -8px 1076px 9px;"
                   class="control">
                   Next
                 </button>
@@ -151,7 +151,7 @@
                   <tr>
                     <td style="
                         border-right: 1px solid lightgray;
-                        padding-right: 60px;
+                        padding-right: 33px;padding-top: 20px;
                       ">
                       <ul type="none">
                         <li class="list">
@@ -169,7 +169,7 @@
                           </mat-form-field>
                         </li>
                         <li class="list">
-                          <mat-form-field appearance="outline" style="width: 670px;">
+                          <mat-form-field appearance="outline" style="width: 610px;">
                             <mat-label>Address</mat-label>
                             <textarea matInput formControlName="address"></textarea>
                           </mat-form-field>
@@ -191,9 +191,9 @@
                       </ul>
                     </td>
 
-                    <td style="padding: 10px;">
-                      <ul type="none">
-                        <li class="list" style="font-size: 18px; font-weight: 100;">
+                    <td style="padding: 10px;padding-top:20px;">
+                      <ul type="none" style="padding-left: 17px;">
+                        <li class="list" style="font-size: 16px; font-weight: 100;">
                           <div style="margin-top: 39px;">
                             <mat-radio-group formControlName="trackFor">
                               <mat-radio-button value="private" style="margin-right: 70px;">Private</mat-radio-button>
@@ -213,7 +213,7 @@
                         </li>
 
                         <li class="list">
-                          <mat-form-field appearance="outline" style="width: 440px;">
+                          <mat-form-field appearance="outline" style="width: 400px;">
                             <mat-label>Company Description</mat-label>
                             <textarea matInput formControlName="companyDesc" placeholder="(optional)"></textarea>
                           </mat-form-field>
@@ -227,7 +227,7 @@
               <div>
                 <span>
                   <button mat-stroked-button matStepperPrevious type="button"
-                    style="margin-left: 1022px; margin-right: 35px;" class="control">
+                    style="margin-left: 879px; margin-right: 30px;" class="control">
                     Previous
                   </button></span>
                 <span>
@@ -258,7 +258,7 @@
                   <tr>
                     <td style="
                         background: linear-gradient(lightseagreen, black);
-                        font-size: 25px;
+                        font-size: 20px;
                         padding: 100px 20px 55px 20px;
                         border: 1px solid darkgray;
                       ">
@@ -299,11 +299,12 @@
                     <td>
                       <div style="margin-left: 35px;">
                         <button mat-stroked-button (click)="confirm()" style="
-                            padding: 5px 33px;
+                            padding: 5px 10px;
                             background-color: darkred;
                             color: white;
-                            font-size: 17px;
+                            font-size: 14px;
                             text-shadow: 0px 5px 3px black;
+                            letter-spacing: 3px;
                           " disabled="{{ count }}">
                           CONFIRM BOOKING
                         </button>

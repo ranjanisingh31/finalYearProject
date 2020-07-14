@@ -9,12 +9,8 @@ import { coordinates } from '../_interfaces/coordinates';
 @Injectable({ providedIn: "root" })
 export class TrackVehicleService {
     constructor(private http: HttpClient) { }
-    private _trackUrl = "http://localhost:3000/api/track";
-    private _planUrl = "http://localhost:3000/api/trackPlan";
-    private _addVehicle = "http://localhost:3000/api/addVehicle";
-    private _removeVehicle = "http://localhost:3000/api/removeVehicle";
-    private _selectedPlan = "http://localhost:3000/api/selectedTrackPlan";
-    private _getUserTrackDataUrl = "http://localhost:3000/api/userTrackDetails";
+    private _trackUrl = "http://localhost:3000/api/";
+    private base_url = "https://happyway-backend.herokuapp.com/api/track";
 
 
     public trackDetails = {};
@@ -25,10 +21,10 @@ export class TrackVehicleService {
     confirmTrackingDetails(total): Observable<trackDetails> {
         var data = this.trackDetails;
         data["total"] = total;
-        return this.http.post<trackDetails>(this._trackUrl, data);
+        return this.http.post<trackDetails>(this.base_url + "track", data);
     }
     getTrackPlan(): Observable<trackPlan> {
-        return this.http.get<trackPlan>(this._planUrl);
+        return this.http.get<trackPlan>(this.base_url + "trackPlan");
     }
 
     public clientInfo = {};
@@ -44,18 +40,18 @@ export class TrackVehicleService {
         var value = {};
         value = data;
         value["searchId"] = id;
-        return this.http.post<editVehicle>(this._addVehicle, value);
+        return this.http.post<editVehicle>(this.base_url + "addVehicle", value);
     }
     removeVehicle_Edit(data, id): Observable<editVehicle> {
         var value = {};
         value = data;
         value["searchId"] = id;
-        return this.http.put<editVehicle>(this._removeVehicle, value);
+        return this.http.put<editVehicle>(this.base_url + "removeVehicle", value);
     }
     getSelectedPlan(email): Observable<trackDetails> {
-        return this.http.post<trackDetails>(this._selectedPlan, { email: email });
+        return this.http.post<trackDetails>(this.base_url + "selectedTrackPlan", { email: email });
     }
     getUserTrackData(): Observable<trackDetails[]> {
-        return this.http.get<trackDetails[]>(this._getUserTrackDataUrl);
+        return this.http.get<trackDetails[]>(this.base_url + "userTrackDetails");
     }
 }

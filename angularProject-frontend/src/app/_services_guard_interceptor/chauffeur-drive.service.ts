@@ -11,10 +11,8 @@ import { vehicleDetails } from '../_interfaces/vehicleDetails';
 export class ChauffeurDriveService {
   constructor(private http: HttpClient) { }
 
-  private chauffeurDrive_url = "http://localhost:3000/api/chauffeur-drive";
-  private getVehicleDetails_url = "http://localhost:3000/api/vehicleDetails";
-  private chauffeurDriveDetails_url = "http://localhost:3000/api/chauffeurDriveDetails";
-
+  private base_url = "https://happyway-backend.herokuapp.com/";
+  private chauffeurDrive_url = "http://localhost:3000/";
 
   public chauffeurDriveForm = {};
   setUserRequirements(data, data1) {
@@ -32,15 +30,15 @@ export class ChauffeurDriveService {
     var data = this.chauffeurDriveForm;
     data["total"] = total;
     return this.http.post<confirmBookingChauffeurDrive>(
-      this.chauffeurDrive_url,
+      this.base_url + "api/chauffeur-drive",
       data);
   }
   getVehicleDetails(data): Observable<vehicleDetails[]> {
-    return this.http.post<vehicleDetails[]>(this.getVehicleDetails_url, { useCase: data });
+    return this.http.post<vehicleDetails[]>(this.base_url + "api/vehicleDetails", { useCase: data });
   }
 
   getChauffeurDriveDetails(): Observable<confirmBookingChauffeurDrive[]> {
-    return this.http.get<confirmBookingChauffeurDrive[]>(this.chauffeurDriveDetails_url);
+    return this.http.get<confirmBookingChauffeurDrive[]>(this.base_url + "api/chauffeurDriveDetails");
   }
 
   public vehicleDetails = [{}];

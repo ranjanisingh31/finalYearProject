@@ -9,6 +9,11 @@ app-navbar {
   background-repeat: no-repeat;
   background-size: cover;
   height: 100%;
+
+  font-size: 14px;
+}
+h1{
+  font-size: 20px;
 }
 .wrapper-1 {
   margin-top: 200px;
@@ -16,7 +21,7 @@ app-navbar {
 .row,
 .row2,
 .row3 {
-  height: 300px;
+  height: 285px;
   width: 100%;
   text-align: center;
 }
@@ -41,13 +46,14 @@ app-navbar {
   border-right: 1px solid lightgray;
 }
 .row3 {
-  height: 310px;
+  height: 285px;
   border-radius: 20px;
   background-color: white;
+  font-size: 12px;
 }
 mat-form-field {
   padding: 0px 10px;
-  width: 210px;
+  width: 190px;
 }
 ::ng-deep.mat-form-field-wrapper {
   padding-bottom: 5px;
@@ -56,8 +62,8 @@ mat-form-field {
   line-height: 5px;
 } */
 mat-card {
-  width: 270px;
-  height: 195px;
+  width: 235px;
+  height: 180px;
   text-align: center;
   padding: 15px 0px 5px 0px;
   background:linear-gradient(45deg, lightgray,white,white);
@@ -71,7 +77,7 @@ mat-card {
 }
 .row5 {
   width: 100%;
-  height: 310px;
+  height: 285px;
   background-color: white;
   border-radius: 20px;
 }
@@ -81,7 +87,7 @@ mat-card {
 .row6 > h1 {
   background-color: darkorange;
   text-align: center;
-  font-size: 30px;
+  font-size: 25px;
   padding-top: 10px;
   height: 40px;
   font-weight: 400;
@@ -89,7 +95,7 @@ mat-card {
   letter-spacing: 10px;
 }
 .row6 > tr {
-  font-size: 20px;
+  font-size: 15px;
 }
 .row6 > li {
   margin-bottom: 10px;

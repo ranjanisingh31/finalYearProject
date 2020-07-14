@@ -28,12 +28,17 @@
     </mat-dialog-content>
 
     <mat-dialog-actions>
-      <button mat-stroked-button mat-dialog-close="true" [disabled]="!loginForm.valid"
-        (click)="onSubmitLogin(email.value,pass.value)" class="btn">
-        Sign-in
-      </button>
-      <small class="link">Are you a new user?&nbsp;<a style="cursor: pointer; color: darkred;" mat-dialog-close="true"
-          (click)="openRegister()">Register</a></small>
+      <ul type="none">
+        <li>
+          <button mat-stroked-button mat-dialog-close="true" [disabled]="!loginForm.valid"
+            (click)="onSubmitLogin(email.value,pass.value)" class="btn">
+            Sign-in
+          </button></li>
+        <li>
+          <small class="link">Are you a new user?&nbsp;<a style="cursor: pointer; color: darkred;"
+              mat-dialog-close="true" (click)="openRegister()">Register</a></small>
+        </li>
+      </ul>
     </mat-dialog-actions>
   </form>
 </div>
@@ -69,12 +74,18 @@
       </ul>
     </mat-dialog-content>
     <mat-dialog-actions>
-      <button mat-dialog-close="true" mat-stroked-button [disabled]="!registerationForm.valid"
-        (click)="onSubmitRegister()" class="btn">
-        REGISTER
-      </button>
-      <small class="link">Already have login and password?&nbsp;<a style="cursor: pointer; color: darkred;"
-          (click)="openLogin()" mat-dialog-close="true">Sign-in</a></small></mat-dialog-actions>
+      <ul type="none">
+        <li>
+          <button mat-dialog-close="true" mat-stroked-button [disabled]="!registerationForm.valid"
+            (click)="onSubmitRegister()" class="btn">
+            REGISTER
+          </button></li>
+        <li>
+          <small class="link">Already have login and password?&nbsp;<a style="cursor: pointer; color: darkred;"
+              (click)="openLogin()" mat-dialog-close="true">Sign-in</a></small>
+        </li>
+      </ul>
+    </mat-dialog-actions>
   </form>
 </div>
 <!-- Reset Page -->
@@ -104,12 +115,16 @@
       </ul>
     </mat-dialog-content>
     <mat-dialog-actions>
-      <button mat-stroked-button mat-dialog-close="true" [disabled]="!resetPasswordForm.valid" (click)="onSubmitReset()"
-        class="btn">
-        RESET
-      </button>
-      <small class="link">Already have login and password?&nbsp;<a style="cursor: pointer; color: darkred;"
-          (click)="openLogin()" mat-dialog-close="true">Sign-in</a></small>
+      <ul type="none">
+        <li>
+          <button mat-stroked-button mat-dialog-close="true" [disabled]="!resetPasswordForm.valid"
+            (click)="onSubmitReset()" class="btn">
+            RESET
+          </button></li>
+        <li>
+          <small class="link">Already have login and password?&nbsp;<a style="cursor: pointer; color: darkred;"
+              (click)="openLogin()" mat-dialog-close="true">Sign-in</a></small></li>
+      </ul>
     </mat-dialog-actions>
   </form>
 </div>

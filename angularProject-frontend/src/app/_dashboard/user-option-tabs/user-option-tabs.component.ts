@@ -14,13 +14,13 @@ export class UserOptionTabsComponent implements OnInit {
     private _signinService: SigninAuthService,
     private router: Router,
     private dialog: MatDialog
-  ) {}
+  ) { }
   onClick() {
     if (this._signinService.loggedIn()) {
       this.router.navigate(["/track-vehicle"]);
     } else {
       this.dialog.open(LoginPageComponent, {
-        width: "450px",
+        width: "400px",
         data: {
           reset: false,
           login: true,
@@ -29,5 +29,5 @@ export class UserOptionTabsComponent implements OnInit {
       });
     }
   }
-  ngOnInit(): void {}
+  ngOnInit(): void { }
 }

@@ -7,7 +7,8 @@ import io from "socket.io-client";
 export class SocketIoServiceService {
 
   constructor() {
-    this.socket = io("http://localhost:3000");
+    this.socket = io("https://happyway-backend.herokuapp.com");
+    //this.socket = io("http://localhost:3000");
     this.socket.on('connect', function () {
       console.log('connected to server');
     });

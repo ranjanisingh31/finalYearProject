@@ -33,8 +33,8 @@ export class ChauffeurDriveDetailsComponent implements OnInit {
 
   getInfo(detail) {
     this.dialog.open(ChauffeurDriveInfoDialogComponent, {
-      width: "420px",
-      height: "350px",
+      width: "395px",
+      height: "353px",
       data: {
         mode: detail.mode,
         seat: detail.seat,

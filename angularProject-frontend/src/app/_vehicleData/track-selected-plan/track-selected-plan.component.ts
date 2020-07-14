@@ -30,7 +30,7 @@ export class TrackSelectedPlanComponent implements OnInit {
     edit(item) {
         const dialogBox = this.dialog.open(TrackEditVehicleInfoDialogComponent, {
             width: "400px",
-            height: "510px",
+            height: "500px",
             data: {
                 vehicleName: item,
                 edit: true
@@ -46,7 +46,7 @@ export class TrackSelectedPlanComponent implements OnInit {
     add() {
         const dialogBox = this.dialog.open(TrackEditVehicleInfoDialogComponent, {
             width: "400px",
-            height: "510px",
+            height: "500px",
             data: { edit: false }
         });
         dialogBox.afterClosed().subscribe(() => {

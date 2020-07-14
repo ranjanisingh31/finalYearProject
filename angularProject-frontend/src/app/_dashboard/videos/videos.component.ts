@@ -7,7 +7,7 @@ import { ScrollDispatcher } from "@angular/cdk/scrolling";
   styleUrls: ["./videos.component.css"],
 })
 export class VideosComponent implements OnInit {
-  constructor(private scrollDispatcher: ScrollDispatcher) {}
+  constructor(private scrollDispatcher: ScrollDispatcher) { }
   public videos = [
     {
       name: "assets/video/cars1.mp4",
@@ -94,14 +94,14 @@ export class VideosComponent implements OnInit {
         document.body.scrollTop > 400 ||
         document.documentElement.scrollTop > 400
       ) {
-        head.style.fontSize = "70px";
+        head.style.fontSize = "65px";
         head.style.textAlign = "left";
         head.style.zIndex = "1";
         head.style.width = "500px";
         head.style.margin = "0px";
         head.style.top = "0px";
       } else {
-        head.style.fontSize = "100px";
+        head.style.fontSize = "80px";
         head.style.textAlign = "center";
         head.style.zIndex = "0";
         head.style.width = "100%";

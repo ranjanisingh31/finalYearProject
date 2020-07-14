@@ -1,6 +1,6 @@
 mat-form-field {
   width: 245px;
-  font-size: 16px;
+  font-size: 15px;
 }
 
 mat-card {
@@ -22,4 +22,8 @@ mat-card {
 h2 {
   font-weight: 700;
   text-shadow: 5px 3px 3px lightgrey;
+}
+
+.dialog{
+  font-size: 18px;
 }

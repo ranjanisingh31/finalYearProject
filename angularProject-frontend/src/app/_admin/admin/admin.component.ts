@@ -23,7 +23,7 @@ export class AdminComponent implements OnInit {
   selectedVehicleDetails(id) {
     this._selfDriveService.getSelectedVehicleDetails(id).subscribe((res) => {
       this.dialog.open(AdminSelectedVehicleDialogComponent, {
-        width: '848px',
+        width: '852px',
         data: { id: id, vehicle: res }
       });
     }, (err) => {

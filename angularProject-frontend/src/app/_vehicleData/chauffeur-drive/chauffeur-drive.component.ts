@@ -124,7 +124,7 @@ export class ChauffeurDriveComponent implements OnInit {
       this.router.navigate(["/chauffeur-drive"]);
     } else {
       this.dialog.open(LoginPageComponent, {
-        width: "450px",
+        width: "400px",
         data: {
           reset: false,
           login: true,

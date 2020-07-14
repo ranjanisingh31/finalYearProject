@@ -1,9 +1,10 @@
 .wrapper {
   text-align: center;
-  font-size: 15px;
+  font-size: 13px;
 }
 .mat-display-2 {
   margin-bottom: 10px;
+  font-size: 40px;
 }
 
 .mat-dialog-content {
@@ -12,20 +13,18 @@
   margin-bottom: 20px;
 }
 .forgotPass {
-  margin-left: 260px;
+  margin-left: 230px;
 }
 
-.link {
-  margin: 10px 0px 15px 125px;
-}
-.btn {
-  margin-left: 150px !important;
-  padding: 0 20px !important;
-  font-size: 20px;
-}
 mat-form-field {
-  width: 332.5px;
+  width: 285px;
 }
 mat-icon {
   cursor: pointer;
+}
+
+ul{
+  padding:0px;
+  text-align: center;
+  width:100%;
 }

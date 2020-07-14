@@ -34,8 +34,8 @@ export class SelfDriveDetailsComponent implements OnInit {
 
   getInfo(detail) {
     this.dialog.open(SelfDriveInfoDialogComponent, {
-      width: "420px",
-      height: "350px",
+      width: "395px",
+      height: "353px",
       data: {
         mode: detail.mode,
         seat: detail.seat,
